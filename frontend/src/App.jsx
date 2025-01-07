@@ -1,45 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei'; 
-import Model from './Components/Model';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './ThemeContext'; 
+import HomePage from './Components/HomePage/HomePage';
+import Test from './Components/Test/Test';
 
-const App = () => {
-  // pour la position de la mouse
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // calcul du mouvement de la mouse et maj de la position de la mouse
-  const handleMouseMove = (event) => {
-    setMousePosition({
-      x: (event.clientX / window.innerWidth) * 2 - 1,  
-      y: -(event.clientY / window.innerHeight) * 2 + 1, 
-    })
-  }
-
-  // ecouteur pour le mouve de la mouse
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, [])
-
+function App() {
   return (
-    <Canvas className='custom-canvas'>
-
-      {/* lumieres */}
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} intensity={0.7} />
-
-      {/* model 3D */}
-      <Model mousePosition={mousePosition} />
-
-      {/* permet a l'user de tourner autour du mesh */}
-      <OrbitControls />
-
-    </Canvas>
+    <ThemeProvider>
+      <Router>
+          {/* <Navbar /> */}
+          <Routes>
+            <Route path="/" element={<HomePage  />} />
+            <Route path="/test" element={<Test  />} />
+          </Routes>
+      </Router>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
 

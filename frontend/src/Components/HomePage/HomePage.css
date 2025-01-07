@@ -1,0 +1,11 @@
+.custom-canvas {
+    display: block;
+    width: 100vw;  
+    height: 100vh !important; 
+    background: #5a5858;
+}
+  
+.mesh-hover {
+    cursor: pointer; 
+}
+  
