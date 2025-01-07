@@ -11,7 +11,7 @@ const Model = ({ mousePosition }) => {
   useEffect(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y = mousePosition.x * Math.PI; // rotation sur axe Y
-      meshRef.current.rotation.x = mousePosition.y * Math.PI / 4; // rotation sur axe X
+      meshRef.current.rotation.x = mousePosition.y * Math.PI / 2; // rotation sur axe X
     }
   }, [mousePosition]);
 
@@ -19,3 +19,5 @@ const Model = ({ mousePosition }) => {
 };
 
 export default Model;
+
+

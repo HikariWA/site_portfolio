@@ -6,9 +6,9 @@
   justify-content: center;
 }
 
-.canvas-custom {
+.custom-canvas {
   display: block;
   width: 100vw;  
   height: 100vh; 
-  background: #eee;
+  background: #5a5858;
 }
