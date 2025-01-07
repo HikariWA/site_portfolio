@@ -41,7 +41,7 @@ const Model = ({ mousePosition }) => {
       if (selectedPart === 'Cube_1') {
         navigate('/about')
       } else if (selectedPart === 'Cube_3') {
-        navigate('/test')
+        navigate('/about')
       } else {
         navigate('/')
       }
