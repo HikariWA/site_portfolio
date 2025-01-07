@@ -5,7 +5,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import './Model.css'
 import { Raycaster, Vector2 } from 'three'; // objets three.js
 
-
 const Model = ({ mousePosition }) => {
   const meshRef = useRef();
   const gltf = useLoader(GLTFLoader, '/buildings.glb');  
@@ -55,17 +54,17 @@ const Model = ({ mousePosition }) => {
       // traverse = fonction qui parcourt tous les meshes de la scene
       gltf.scene.traverse((child) => {
         if (child.isMesh) {
-          console.log("noms du mesh: " + child.name); 
+          console.log("nom du mesh: " + child.name); 
         }
       })
     }
   }, [gltf]);
 
   return (
-    <primitive 
-      object={gltf.scene} ref={meshRef} scale={[1, 1, 1]} position={[0, 0, 0]}  onClick={handleMeshClick}
-      className="mesh-hover"
-    />
+      <primitive 
+        object={gltf.scene} ref={meshRef} scale={[1, 1, 1]} position={[0, 0, 0]}  onClick={handleMeshClick}
+        className="mesh-hover"
+      />
   );
 };
 
