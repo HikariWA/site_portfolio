@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei'; 
-import Model from '../Model/Model';
+import Model from './Model/Model';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -26,7 +26,7 @@ const HomePage = () => {
 
 
   return (
-    <Canvas className='custom-canvas'>
+    <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
       {/* lumieres */}
       <ambientLight intensity={0.5} />
