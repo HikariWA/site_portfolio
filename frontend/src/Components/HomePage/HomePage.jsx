@@ -42,13 +42,12 @@ const HomePage = () => {
         <Model mousePosition={mousePosition} />
 
         {/* permet a l'user de tourner autour du mesh */}
-        {/* <OrbitControls maxDistance={8} minDistance={2} /> */}
         <OrbitControls
             ref={controlsRef}
             maxDistance={10}
-            minDistance={2}
-            enablePan={false}  
-            enableZoom={false} 
+            minDistance={3}
+            // enablePan={false}  
+            // enableZoom={false} 
           />
 
         </Canvas>
