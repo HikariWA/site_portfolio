@@ -133,8 +133,8 @@ const Model = ({ mousePosition }) => {
         onPointerMove={handleMouseMove}
         onClick={handleMeshClick}
       />
-      {selectedPart && (
-        <Html position={[selectedPart.position.x, selectedPart.position.y + 2, selectedPart.position.z]} className="mesh-label">
+      {selectedPart && hoveredText && (
+        <Html position={[selectedPart.position.x + 2, selectedPart.position.y + 2.3, selectedPart.position.z]} className="mesh-label">
           <div className="hoveredText-selectedPart">{hoveredText}</div>
         </Html>
       )}
