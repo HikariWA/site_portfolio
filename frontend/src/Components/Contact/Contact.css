@@ -1,0 +1,62 @@
+/* Contact.css */
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.ctc-user-infos {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ctc-user-infos input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ctc-content {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    bottom: -50px;
+    right: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ctc-content select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ctc-content textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100px;
+}
+
+.ctc-content button {
+    padding: 10px;
+    border: none;
+    background-color: #0073e6;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ctc-content button:hover {
+    background-color: #005bb5;
+}

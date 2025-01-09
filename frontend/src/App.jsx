@@ -6,6 +6,7 @@ import About from './Components/About/About';
 import Expertise from './Components/Expertise/Expertise';
 import Navbar from './Components/Navbar/Navbar';
 import Members from './Components/Members/Members';
+import Contact from './Components/Contact/Contact';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/expertise" element={<Expertise  />} />
             <Route path="/members" element={<Members  />} />
             <Route path="/about" element={<About  />} />
+            <Route path="/contact" element={<Contact  />} />
           </Routes>
       </Router>
     </ThemeProvider>
