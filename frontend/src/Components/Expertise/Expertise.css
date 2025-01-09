@@ -1,0 +1,153 @@
+.expertise-container-all {
+    background-color: #6d6868;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 30px;
+    font-family: Arial, sans-serif;
+    color: rgb(236, 234, 234);
+}
+
+.expertise-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    gap: 30px;
+}
+
+.service-card {
+    position: relative;
+    background-color: rgb(154, 152, 152);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    height: 400px;
+    width: 300px;
+    /* transition: all 0.3s ease; */
+}
+
+
+.service-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.service-image {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+.service-icon {
+    position: absolute;
+    bottom: -100%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(100%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    opacity: 0;
+    transition: all 0.3s ease-in-out; 
+}
+
+.service-icon {
+    position: absolute;
+    top: -100%;
+    transform: translate(-50%, -50%); 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    font-size: 30px;
+    color: white;
+}
+
+
+.service-icon img {
+    width: 100%;
+}
+
+.service-card:hover .service-icon {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%); 
+}
+
+.service-card:hover .service-image {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.service-card img {
+    object-fit: cover;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.service-card h3 {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.service-card:hover {
+    animation: pulse 2s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.07);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.76);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.expertise-title {
+    display: flex;
+    justify-content: left;
+    width: 80%;
+    font-size: 47px;
+    font-family: "Oswald", serif;
+}
+
+.expertise-title:hover .read-more-button {
+    opacity: 1;
+}
+
+
+
