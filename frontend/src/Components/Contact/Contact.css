@@ -1,5 +1,3 @@
-/* Contact.css */
-
 .contact-container {
     display: flex;
     flex-direction: column;
@@ -10,18 +8,25 @@
 }
 
 .ctc-user-infos {
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 20px;
+    min-width: 300px;
+    min-height: 300px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    background-color: #d9d4d4;
     gap: 10px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .ctc-user-infos input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    width: 300px;
 }
 
 .ctc-content {
@@ -31,9 +36,26 @@
     bottom: -50px;
     right: -10px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    background-color: #d9d4d4;
     gap: 10px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding: 20px;
+    border-radius: 10px;
 }
+
+/* .ctc-content:hover {
+    cursor: url('/assets/color.png'), pointer;
+} */
+
+
+.ctc-content:hover {
+    cursor: url('/assets/sn.cur') 32 32, pointer;  
+}
+
 
 .ctc-content select {
     padding: 10px;
