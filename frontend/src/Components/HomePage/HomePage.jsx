@@ -10,6 +10,38 @@ const HomePage = () => {
   // pour la position de la mouse
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const controlsRef = useRef()
+  const [popUp, setPopUp] = useState(0)
+  const popups = [
+    {
+      message: "Hello! Naviguez avec le modèle 3D pour explorer.",
+      position: { top: '20%', left: '10%' }
+    },
+    {
+      message: "Ou bien, utilisez la barre de navigation",
+      position: { top: '7%', left: '2%' }
+    },
+    {
+      message: "Bonne visite et amusez-vous bien!",
+      position: { top: '80%', left: '80%' }
+    }
+  ]
+
+  // fonction pour afficher popups
+  const handlePopUp = () => {
+    if (popUp < popups.length - 1) {
+      setPopUp(popUp + 1)
+    }
+  }
+
+  // si c'est le dernier popup, fermer apres 2sec
+  useEffect(() => {
+    if (popUp === popups.length - 1) {
+      const timeout = setTimeout(() => {
+        setPopUp(null)
+      }, 2500)
+      return () => clearTimeout(timeout) // pour nettoyer timeout
+    }
+  }, [popUp])
 
   // calcul du mouvement de la mouse et maj de la position de la mouse
   const handleMouseMove = (event) => {
@@ -32,6 +64,21 @@ const HomePage = () => {
     <div className='homepage-container'>
         <Navbar/>
         {/* <AnimatedText /> */}
+        {popUp !== null && popups[popUp] && (
+          <div
+            className='popup'
+            style={popups[popUp].position}
+          >
+            <div className='popup-content'>
+              <p>{popups[popUp].message}</p>
+              {popUp < popups.length - 1 ? (
+                <button onClick={handlePopUp}>Next</button>
+              ) : (
+                <p>Merci et bonne visite !</p>
+              )}
+            </div>
+          </div>
+        )}
         <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
         {/* lumieres */}
@@ -56,5 +103,8 @@ const HomePage = () => {
 };
 
 export default HomePage
+
+
+
 
 
