@@ -97,6 +97,11 @@ const Model = ({ mousePosition }) => {
     }
   };
 
+  const handlePointerOff = () => {
+    setHoveredText('')
+  }
+  
+
   // fonction navigation
   const handleMeshClick = () => {
     if (selectedPart) {
@@ -138,6 +143,7 @@ const Model = ({ mousePosition }) => {
         position={[0, -0.2, 0]}  
         onPointerMove={handleMouseMove}
         onClick={handleMeshClick}
+        onPointerOut={handlePointerOff}
       />
       {selectedPart && hoveredText && (
         <Html position={[selectedPart.position.x + 2, selectedPart.position.y + 0.8, selectedPart.position.z]} className="mesh-label">

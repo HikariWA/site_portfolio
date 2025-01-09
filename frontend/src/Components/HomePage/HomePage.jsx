@@ -29,7 +29,7 @@ const HomePage = () => {
   // verif si popups ont deja ete vus
   useEffect(() => {
     const seenPopups = localStorage.getItem('seenPopups')
-    console.log("localStorage pour seenPopups : ", seenPopups);
+    // console.log("localStorage pour seenPopups : ", seenPopups);
     if (seenPopups === 'true') {
       setPopUp(null)
     }
