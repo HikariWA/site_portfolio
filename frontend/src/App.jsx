@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './ThemeContext'; 
 import HomePage from './Components/HomePage/HomePage';
 import About from './Components/About/About';
-import Expertise from './Components/HomePage/Expertise/Expertise';
+import Expertise from './Components/Expertise/Expertise';
 
 
 function App() {
