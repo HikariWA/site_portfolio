@@ -3,10 +3,10 @@
     width: 100vw;  
     height: 100vh !important; 
 }
-  
-.mesh-hover {
+/* a voir pourquoi jarrive pas a l'actionner  */
+/* .mesh-hover {
     cursor: pointer; 
-}
+} */
   
 .homepage-container {
   position: relative;

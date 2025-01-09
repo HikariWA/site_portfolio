@@ -125,7 +125,7 @@ const Model = ({ mousePosition }) => {
 
   return (
     <group>
-      
+
       <directionalLight 
         position={[5, 10, 5]} 
         intensity={1.5} 
@@ -135,12 +135,12 @@ const Model = ({ mousePosition }) => {
         object={gltf.scene} 
         ref={meshRef} 
         scale={[1, 1, 1]} 
-        position={[0, 0, 0]}  
+        position={[0, -0.2, 0]}  
         onPointerMove={handleMouseMove}
         onClick={handleMeshClick}
       />
       {selectedPart && hoveredText && (
-        <Html position={[selectedPart.position.x + 2, selectedPart.position.y + 2.3, selectedPart.position.z]} className="mesh-label">
+        <Html position={[selectedPart.position.x + 2, selectedPart.position.y + 0.8, selectedPart.position.z]} className="mesh-label">
           <div className="hoveredText-selectedPart">{hoveredText}</div>
         </Html>
       )}
