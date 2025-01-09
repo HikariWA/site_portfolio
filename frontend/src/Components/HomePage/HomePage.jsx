@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei'; 
 import Model from './Model/Model';
 import './HomePage.css';
 import AnimatedText from './AnimatedText/AnimatedText';
+import Expertise from './Expertise/Expertise';
 
 const HomePage = () => {
   // pour la position de la mouse
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const controlsRef = useRef()
 
   // calcul du mouvement de la mouse et maj de la position de la mouse
   const handleMouseMove = (event) => {
@@ -28,7 +30,7 @@ const HomePage = () => {
 
   return (
     <div className='homepage-container'>
-        <AnimatedText />
+        {/* <AnimatedText /> */}
         <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
         {/* lumieres */}
@@ -39,9 +41,18 @@ const HomePage = () => {
         <Model mousePosition={mousePosition} />
 
         {/* permet a l'user de tourner autour du mesh */}
-        <OrbitControls />
+        {/* <OrbitControls maxDistance={8} minDistance={2} /> */}
+        <OrbitControls
+            ref={controlsRef}
+            maxDistance={10}
+            minDistance={2}
+            enablePan={false}  
+            enableZoom={false} 
+          />
 
         </Canvas>
+
+        <Expertise/>
     </div>
   );
 };

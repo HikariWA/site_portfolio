@@ -43,22 +43,22 @@ const Model = ({ mousePosition }) => {
       } else if (selectedPart === 'Cube_3') {
         navigate('/about')
       } else {
-        navigate('/')
+        navigate('/about')
       }
     }
   }
 
   // verif noms du mesh
-  useEffect(() => {
-    if (gltf.scene) {
-      // traverse = fonction qui parcourt tous les meshes de la scene
-      gltf.scene.traverse((child) => {
-        if (child.isMesh) {
-          console.log("nom du mesh: " + child.name); 
-        }
-      })
-    }
-  }, [gltf]);
+  // useEffect(() => {
+  //   if (gltf.scene) {
+  //     // traverse = fonction qui parcourt tous les meshes de la scene
+  //     gltf.scene.traverse((child) => {
+  //       if (child.isMesh) {
+  //         console.log("nom du mesh: " + child.name); 
+  //       }
+  //     })
+  //   }
+  // }, [gltf]);
 
   return (
       <primitive 
