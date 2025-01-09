@@ -14,18 +14,18 @@ const HomePage = () => {
   const popups = [
     {
       message: "Hello! Naviguez avec le modèle 3D pour explorer.",
-      position: { top: '20%', left: '10%' },
+      position: { top: '20%', left: '60%' },
       lightPosition: [2, 2, 2],
     },
     {
       message: "Ou bien, utilisez la barre de navigation",
-      position: { top: '7%', left: '2%' },
-      lightPosition: [ -4, 4, 0 ]
+      position: { top: '7%', left: '5%' },
+      lightPosition: [ -2, 4, 3 ]
     },
     {
       message: "Bonne visite et amusez-vous bien!",
-      position: { top: '80%', left: '80%' },
-      lightPosition: [0, 5, 3],
+      position: { top: '70%', left: '10%' },
+      lightPosition: [-2, 0, 3],
     }
   ];
 
@@ -121,6 +121,7 @@ const HomePage = () => {
             color="#FFA500"
           />
         <spotLight position={[10, 10, 10]} intensity={0.7} />
+        <spotLight position ={[2, 2, 2]} intensity={10} color="#78AD19" />
 
         {/* modele 3D */}
         <Model mousePosition={mousePosition} />
