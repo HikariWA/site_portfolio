@@ -16,3 +16,12 @@
 .dark-mode {
   margin: 0;
 }
+
+button {
+  background-color: #ff7f50;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

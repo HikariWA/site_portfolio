@@ -5,6 +5,7 @@ import gsap from 'gsap';
 const Expertise = () => {
     const [services, setServices] = useState([])
     const [images, setImages] = useState([])
+    const [hovered, setHovered] = useState(null)
 
 //   useEffect(() => {
 //     fetch('/services.json')
@@ -53,25 +54,33 @@ const Expertise = () => {
         <div className="expertise-container">
             <div className="service-container">
                 {services.map(service => (
-                    <div key={service.id} className="service-card">
+                    <div key={service.id} className="service-card"
+                    onMouseEnter={() => setHovered(service.id)} 
+                    onMouseLeave={() => setHovered(null)}>
                         <div className="service-image">
                             {service.image && <img src={`/assets/${service.image}`} alt={service.title} />}
                         </div>
                         <div className="service-icon">
                             {service.icon && <img src={`/assets/${service.icon}`} alt={service.title} />}
                         </div>
-                        <h3>{service.title}</h3>
+                            <h3>
+                                {hovered === service.id ? (
+                                    <button>Read more</button>
+                                ) : (
+                                    service.title
+                                )}
+                            </h3>
                     </div>
                 ))}
             </div>
         </div>
         <div className='expertise-title'>
-            <h2>
+          <h2>
             {'Our Expertise'.split('').map((letter, index) => (
-                <span key={index}>{letter}</span>  
+              <span key={index}>{letter}</span>  
             ))}
-            </h2>
-        </div>
+          </h2>
+      </div>
     </div>
   )
 }

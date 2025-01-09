@@ -38,8 +38,9 @@
     text-align: center;
     height: 400px;
     width: 300px;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
 }
+
 
 .service-image {
     position: absolute;
@@ -143,3 +144,10 @@
     font-size: 47px;
     font-family: "Oswald", serif;
 }
+
+.expertise-title:hover .read-more-button {
+    opacity: 1;
+}
+
+
+
