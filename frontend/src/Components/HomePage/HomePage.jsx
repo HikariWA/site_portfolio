@@ -4,7 +4,6 @@ import { OrbitControls } from '@react-three/drei';
 import Model from './Model/Model';
 import './HomePage.css';
 import AnimatedText from './AnimatedText/AnimatedText';
-import Expertise from './Expertise/Expertise';
 
 const HomePage = () => {
   // pour la position de la mouse
@@ -51,8 +50,6 @@ const HomePage = () => {
           />
 
         </Canvas>
-
-        {/* <Expertise/> */}
     </div>
   );
 };
