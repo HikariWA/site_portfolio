@@ -15,9 +15,6 @@
   overflow: auto;
 }
 
-
-
-
 .popup {
   position: absolute;
   background: rgba(255, 255, 255, 0.9);
@@ -50,3 +47,22 @@
 .popup-content button:hover {
   background-color: #0056b3;
 }
+
+/* 
+.popup {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+ */

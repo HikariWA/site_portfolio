@@ -14,15 +14,18 @@ const HomePage = () => {
   const popups = [
     {
       message: "Hello! Naviguez avec le modèle 3D pour explorer.",
-      position: { top: '20%', left: '10%' }
+      position: { top: '20%', left: '10%' },
+      lightPosition: [2, 2, 2],
     },
     {
       message: "Ou bien, utilisez la barre de navigation",
-      position: { top: '7%', left: '2%' }
+      position: { top: '7%', left: '2%' },
+      lightPosition: [ -4, 4, 0 ]
     },
     {
       message: "Bonne visite et amusez-vous bien!",
-      position: { top: '80%', left: '80%' }
+      position: { top: '80%', left: '80%' },
+      lightPosition: [0, 5, 3],
     }
   ];
 
@@ -77,8 +80,14 @@ const HomePage = () => {
     checkPopups(); // Re-check popups after reset
   };
 
+
+  // pour assombrir background
+  const backgroundStyle = popupIndex !== null ? { backgroundColor: 'rgba(0, 0, 0, 0.6)' } : {}
+
+
+
   return (
-    <div className='homepage-container'>
+    <div className='homepage-container' style={backgroundStyle}>
         <Navbar/>
         {/* <AnimatedText /> */}
 
@@ -103,6 +112,14 @@ const HomePage = () => {
 
         {/* lumieres */}
         <ambientLight intensity={0.5} />
+        <spotLight 
+            position={popups[popupIndex]?.lightPosition || [10, 10, 10]} 
+            intensity={10} 
+            angle={Math.PI / 4}
+            penumbra={1}
+            castShadow
+            color="#FFA500"
+          />
         <spotLight position={[10, 10, 10]} intensity={0.7} />
 
         {/* modele 3D */}
