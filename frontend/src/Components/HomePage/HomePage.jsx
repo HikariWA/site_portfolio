@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react'; // useCallback pour eviter de recreer des fonctions
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei'; 
 import Model from './Model/Model';
@@ -11,7 +11,6 @@ const HomePage = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const controlsRef = useRef()
   const [popupIndex, setPopupIndex] = useState(null)
-  const [popupKey, setPopupKey] = useState(0)
   const popups = [
     {
       message: "Hello! Naviguez avec le modèle 3D pour explorer.",
@@ -27,55 +26,34 @@ const HomePage = () => {
     }
   ];
 
+  // systeme de verif popups si vus ou non
   const checkPopups = useCallback(() => {
-    let seenPopups = JSON.parse(localStorage.getItem('seenPopups'));
-  
-    // si seenPopups = null ou undefined => tableau de popups non vus
-    if (!seenPopups) {
-      seenPopups = new Array(popups.length).fill(false);
-      localStorage.setItem('seenPopups', JSON.stringify(seenPopups));
-    }
-  
-    // trouver popup non vu
-    const nextPopupIndex = seenPopups.findIndex(seen => !seen);
-  
-  
-    console.log('seenPopups :', seenPopups);
-    console.log('nextPopupIndex :', nextPopupIndex);
-  
-    if (nextPopupIndex === -1) {
-      setPopupIndex(null) // tous les popups vus
-      console.log('Tous les popups ont été vus');
-    } else {
-      setPopupIndex(nextPopupIndex) 
-      console.log('popup avec index :', nextPopupIndex);
-    }
-  }, [popups.length]);
-  
-  const handleNext = () => {
-    if (popupIndex !== null && popupIndex < popups.length - 1) {
-      let seenPopups = JSON.parse(localStorage.getItem('seenPopups'));
-      seenPopups[popupIndex] = true; // pour preciser que popup actuel etait vu
-      localStorage.setItem('seenPopups', JSON.stringify(seenPopups));
-  
-      console.log("popup precise comme vu:" + {popupIndex});
-  
-      setPopupKey(prevKey => prevKey + 1); // forcer le re-rendu
-      checkPopups() // verif popup suoivant
-    }
-  }
-  
-  const handleLetsGo = () => {
-    let seenPopups = JSON.parse(localStorage.getItem('seenPopups'));
-    seenPopups.fill(true); // mentionne tous les popups comme vus
-    localStorage.setItem('seenPopups', JSON.stringify(seenPopups));
+    let seenPopups = JSON.parse(localStorage.getItem('seenPopups')) || new Array(popups.length).fill(false) // recup des popups vus (stockrs dans storage avec cle seenPopups) pour stockage dans un json, convertit en tableau js ou nouvel array et false car par defaut popup non vu
+    const nextPopupIndex = seenPopups.findIndex(seen => !seen)
+    setPopupIndex(nextPopupIndex === -1 ? null : nextPopupIndex) // maj de l'etat popupIndex, si nextPopupIndex -1 (tous les popups ont ete vus) et null pour pour indiquer qu'aucun popup ne doit etre affiche
+  }, [popups.length])
 
-    console.log('tous les popups etaient vus');
-  
-    setPopupKey(prevKey => prevKey + 1); 
-    checkPopups() 
+  // passer au popup suivant
+  const handleNext = () => {
+    if (popupIndex !== null) {
+      let seenPopups = JSON.parse(localStorage.getItem('seenPopups')) || new Array(popups.length).fill(false)
+      seenPopups[popupIndex] = true
+      localStorage.setItem('seenPopups', JSON.stringify(seenPopups))
+      checkPopups()
+    }
   }
-  
+
+  // useEffect(() => {
+  // console.log("popupIndex actuel :", popupIndex);
+  // }, [popupIndex]);
+
+  // marquer tous les popups en vu
+  const handleLetsGo = () => {
+    let seenPopups = new Array(popups.length).fill(true)
+    // console.log("handleLetsGo :", seenPopups);
+    localStorage.setItem('seenPopups', JSON.stringify(seenPopups))
+    checkPopups()
+  }
 
   // calcul du mouvement de la mouse et maj de la position de la mouse
   const handleMouseMove = (event) => {
@@ -92,6 +70,12 @@ const HomePage = () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+  //reinitialiser popups
+  const handleResetPopups = () => {
+    localStorage.removeItem('seenPopups');
+    checkPopups(); // Re-check popups after reset
+  };
 
   return (
     <div className='homepage-container'>
@@ -110,6 +94,10 @@ const HomePage = () => {
             </div>
           </div>
         )}
+
+        <button onClick={handleResetPopups}>Reinitialiser Popups</button>
+
+
 
         <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
