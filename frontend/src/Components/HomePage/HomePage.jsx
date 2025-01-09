@@ -52,7 +52,7 @@ const HomePage = () => {
 
         </Canvas>
 
-        <Expertise/>
+        {/* <Expertise/> */}
     </div>
   );
 };
