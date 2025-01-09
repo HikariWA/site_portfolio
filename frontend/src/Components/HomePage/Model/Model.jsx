@@ -125,6 +125,12 @@ const Model = ({ mousePosition }) => {
 
   return (
     <group>
+      
+      <directionalLight 
+        position={[5, 10, 5]} 
+        intensity={1.5} 
+        castShadow 
+      />
       <primitive 
         object={gltf.scene} 
         ref={meshRef} 
