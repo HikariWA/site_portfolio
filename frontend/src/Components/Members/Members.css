@@ -1,0 +1,119 @@
+.members-container-all {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.members-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.members {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.member-card {
+    position: relative;
+    height: 400px;
+    width: 300px;
+    margin: 20px;
+    transition: all 2.3s ease;
+    perspective: 1200px;
+}
+
+.member-card:hover .cover {
+    transform: rotateY(-180deg);
+}
+
+.member-card:hover .member-card-back {
+    transform: rotateY(0deg) translateZ(60px); 
+}
+
+.member-card:hover .card {
+    transform: rotateY(-180deg);
+}
+
+.cover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 22px;
+    transition: transform 2.3s;
+    transform-style: preserve-3d;
+}
+
+.cover-content {
+    transform: translateZ(30px); 
+    transition: transform 2.3s ease; 
+    padding: 20px;
+}
+
+.member-card:hover .cover-content {
+    transform: translateZ(50px); 
+}
+
+.member-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 22px;
+    transform: rotateY(180deg) translateZ(60px); 
+    backface-visibility: hidden;
+    transition: transform 2.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member-card-back .social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateZ(60px);
+    opacity: 0;
+    visibility: hidden; 
+    transition: opacity 1s ease, visibility 0s 1s; 
+}
+
+.member-card:hover .member-card-back .social-links {
+    opacity: 1; 
+    visibility: visible; 
+    transition: opacity 1s ease, visibility 0s; 
+}
+
+.member-card-back .social-links a {
+    margin: 5px 0;
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+}
+
+.member-card-back .social-links a:hover {
+    color: #0073e6;
+}
+
+.members-container {
+    animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
