@@ -4,13 +4,14 @@ import { ThemeProvider } from './ThemeContext';
 import HomePage from './Components/HomePage/HomePage';
 import About from './Components/About/About';
 import Expertise from './Components/Expertise/Expertise';
+import Navbar from './Components/Navbar/Navbar';
 
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-          {/* <Navbar /> */}
+          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage  />} />
             <Route path="/expertise" element={<Expertise  />} />

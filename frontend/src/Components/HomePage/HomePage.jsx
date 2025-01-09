@@ -4,6 +4,7 @@ import { OrbitControls } from '@react-three/drei';
 import Model from './Model/Model';
 import './HomePage.css';
 import AnimatedText from './AnimatedText/AnimatedText';
+import Navbar from '../Navbar/Navbar';
 
 const HomePage = () => {
   // pour la position de la mouse
@@ -29,6 +30,7 @@ const HomePage = () => {
 
   return (
     <div className='homepage-container'>
+        <Navbar/>
         {/* <AnimatedText /> */}
         <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
