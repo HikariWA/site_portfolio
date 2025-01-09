@@ -40,20 +40,37 @@ const Expertise = () => {
   // animation GSAP
   useEffect(() => {
     gsap.fromTo('.service-card', { opacity: 0, y: 50 }, { opacity: 1, y: 0, stagger: 0.3, duration: 1 });
+    
+    gsap.fromTo('.expertise-title span', 
+      { opacity: 0, y: 30 }, 
+      { opacity: 1, y: 0, stagger: 0.1, duration: 1 }
+    );
   }, [services]);
 
 
   return (
-    <div className="expertise-container">
-        <h2>Our Expertise</h2>
-        <div className="service-container">
-            {services.map(service => (
-            <div key={service.id} className="service-card">
-                {service.image && <img src={`/assets/${service.image}`} alt={service.title} />}
-                {/* <img src={`/assets/${service.image_id}`} alt={service.title} /> */}
-                <h3>{service.title}</h3>
+    <div className='expertise-container-all'>
+        <div className="expertise-container">
+            <div className="service-container">
+                {services.map(service => (
+                    <div key={service.id} className="service-card">
+                        <div className="service-image">
+                            {service.image && <img src={`/assets/${service.image}`} alt={service.title} />}
+                        </div>
+                        <div className="service-icon">
+                            {service.icon && <img src={`/assets/${service.icon}`} alt={service.title} />}
+                        </div>
+                        <h3>{service.title}</h3>
+                    </div>
+                ))}
             </div>
+        </div>
+        <div className='expertise-title'>
+            <h2>
+            {'Our Expertise'.split('').map((letter, index) => (
+                <span key={index}>{letter}</span>  
             ))}
+            </h2>
         </div>
     </div>
   )

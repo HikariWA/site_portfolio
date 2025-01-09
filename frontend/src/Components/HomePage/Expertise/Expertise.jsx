@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Expertise.css';
+import '../../Expertise/Expertise.css'
 import gsap from 'gsap';
 
 const Expertise = () => {

@@ -12,3 +12,7 @@
   height: 100vh; 
   background: #5a5858;
 }
+
+.dark-mode {
+  margin: 0;
+}
