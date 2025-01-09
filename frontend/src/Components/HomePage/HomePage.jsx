@@ -26,6 +26,16 @@ const HomePage = () => {
     }
   ]
 
+  // verif si popups ont deja ete vus
+  useEffect(() => {
+    const seenPopups = localStorage.getItem('seenPopups')
+    console.log("localStorage pour seenPopups : ", seenPopups);
+    if (seenPopups === 'true') {
+      setPopUp(null)
+    }
+  }, []);
+
+
   // fonction pour afficher popups
   const handlePopUp = () => {
     if (popUp < popups.length - 1) {
@@ -33,15 +43,17 @@ const HomePage = () => {
     }
   }
 
-  // si c'est le dernier popup, fermer apres 2sec
+  // si c'est le dernier popup, fermer apres 2sec + enregistrement localStorage si pop-up vus
   useEffect(() => {
     if (popUp === popups.length - 1) {
       const timeout = setTimeout(() => {
         setPopUp(null)
-      }, 2500)
-      return () => clearTimeout(timeout) // pour nettoyer timeout
+        localStorage.setItem('seenPopups', 'true');
+        console.log("popups dans localStorage brrrr")
+      }, 2000)
+      return () => clearTimeout(timeout); // nettoyer le timeout
     }
-  }, [popUp])
+  }, [popUp]);
 
   // calcul du mouvement de la mouse et maj de la position de la mouse
   const handleMouseMove = (event) => {
