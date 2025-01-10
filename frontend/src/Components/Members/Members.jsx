@@ -33,7 +33,12 @@ const Members = () => {
 
     return (
         <div className='members-container-all'>
-            <div className="members-title">
+            <motion.div 
+                className="members-title"
+                whileHover={{
+                    transition: { staggerChildren: 0.05 }
+                }}
+            >
                 {titleText.split("").map((letter, index) => (
                     <motion.span
                         key={index}
@@ -42,6 +47,11 @@ const Members = () => {
                             rotate: [0, 20, -20, 10, 0],  
                             scale: [0, 1.5, 1],           
                             x: [0, -20, 20, 0],  
+                        }}
+                        whileHover={{
+                            rotate: [0, 20, -20, 10, 0],  
+                            scale: [0, 1.5, 1],           
+                            x: [0, -20, 20, 0],
                         }}
                         transition={{
                             duration: 1.5,
@@ -53,7 +63,7 @@ const Members = () => {
                         {letter}
                     </motion.span>
                 ))}
-            </div>
+            </motion.div>
             <div className='members-container'>
                 <div>
                     {members.length > 0 ? (
