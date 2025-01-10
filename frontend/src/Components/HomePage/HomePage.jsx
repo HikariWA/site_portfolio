@@ -192,8 +192,8 @@ const HomePage = () => {
         {/* permet a user de tourner autour du modele */}
         <OrbitControls
             ref={controlsRef}
-            maxDistance={10}
-            minDistance={3}
+            maxDistance={5}
+            minDistance={2}
             // enablePan={false}  
             // enableZoom={false} 
           />
