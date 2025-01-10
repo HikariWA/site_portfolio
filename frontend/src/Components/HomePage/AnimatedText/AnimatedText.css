@@ -128,8 +128,12 @@
     transform: translateX(0);
     opacity: 1;
   }
+  70% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
   100% {
-    transform: translateX(110vw);
+    transform: translateX(100vw);
     opacity: 0;
   }
 }
