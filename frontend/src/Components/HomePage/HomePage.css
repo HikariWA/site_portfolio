@@ -22,6 +22,7 @@
   backdrop-filter: blur(8px);
   transition: opacity 0.5s ease-in-out, background 1s ease-in-out;
   animation: grainFadeIn 1.5s ease-in-out forwards;
+  max-width: 200px;
 }
 
 .popup::before {
