@@ -1,0 +1,60 @@
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const Dandelion = () => {
+  const location = useLocation()
+
+  // particles non visibles si home
+  if (location.pathname === '/') {
+    return null;
+  }
+
+  // crea particules
+  useEffect(() => {
+    const createDandelions = (e) => {
+      for (let i = 0; i < 5; i++) { 
+        const particle = document.createElement('div')
+        particle.classList.add('particle')
+
+        // position random autour de la mouse
+        const offsetX = (Math.random() - 0.5) * 20;
+        const offsetY = (Math.random() - 0.5) * 20;
+
+        particle.style.left = `${e.clientX + offsetX}px`;
+        particle.style.top = `${e.clientY + offsetY}px`;
+
+        // styles
+        particle.style.position = 'absolute';
+        particle.style.width = `${Math.random() * 10 + 5}px`; 
+        particle.style.height = `${Math.random() * 10 + 5}px`;
+        particle.style.backgroundColor = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`;
+        particle.style.borderRadius = `${Math.random() < 0.5 ? '50%' : '0%'}`; 
+        particle.style.zIndex = '9999';
+        particle.style.pointerEvents = 'none'; 
+        particle.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+        particle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) scale(${Math.random() + 0.5})`;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.style.opacity = '0'; // fade out
+          particle.style.transform += ' scale(0)';
+        }, 50);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 1000); 
+      }
+    }
+
+    document.addEventListener('mousemove', createDandelions)
+
+    return () => {
+      document.removeEventListener('mousemove', createDandelions)
+    }
+  }, [])
+
+  return <div className="dandelion-container"></div>
+}
+
+export default Dandelion

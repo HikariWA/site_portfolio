@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Members from './Components/Members/Members';
 import Contact from './Components/Contact/Contact';
 import AnimatedText from './Components/HomePage/AnimatedText/AnimatedText';
+import Dandelion from './Components/Dandlion/Dandlion';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <ThemeProvider>
       <Router>
           <Navbar />
+          <Dandelion/>
           <Routes>
             <Route path="/" element={<HomePage  />} />
             <Route path="/expertise" element={<Expertise  />} />
