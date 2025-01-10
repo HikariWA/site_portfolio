@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'; // useCallback pour eviter de recreer des fonctions
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei'; 
 import Model from './Model/Model';
 import './HomePage.css';
@@ -99,6 +99,34 @@ const HomePage = () => {
     localStorage.setItem('animatedTextBeenSeen', 'true')
   }
 
+
+  // Fonction de rotation pour la lumiere
+  const RotatingLight = ({ position, color, intensity }) => {
+    const lightRef = useRef();
+  
+    useFrame(({ clock }) => {
+      if (lightRef.current) {
+        const time = clock.getElapsedTime();
+        const radius = 5;
+        lightRef.current.position.x = Math.sin(time) * radius;
+        lightRef.current.position.z = Math.cos(time) * radius;
+      }
+    });
+  
+    return (
+      <spotLight
+        ref={lightRef}
+        position={position}
+        intensity={intensity}
+        color={color}
+        castShadow
+        angle={Math.PI / 4}
+        penumbra={1}
+      />
+    );
+  };
+  
+
   return (
     <div className='homepage-container' style={backgroundStyle}>
         <Navbar/>
@@ -142,6 +170,10 @@ const HomePage = () => {
             color="#78AD19" 
           />
         )}
+
+        {/* Lumieres animees */}
+        <RotatingLight position={[2, 2, 2]} color="#E0B2FF" intensity={10} />
+        <RotatingLight position={[-3, 0, 5]} color="#AB50D6" intensity={10}/>
 
         {/* modele 3D */}
         <Model mousePosition={mousePosition} />
