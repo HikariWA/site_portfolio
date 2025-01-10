@@ -2,15 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import './Members.css';
+import './Members.css'
 
 const Members = () => {
-    const [members, setMembers] = useState([])
-    const [hovered, setHovered] = useState(null)
-    const titleText = "Team"
+    const [members, setMembers] = useState([]);
+    const [hoveredWord, setHoveredWord] = useState(null);
+    const titleText = "Team";
 
-    const words = ["Innovation", "Idea", "Creation", "Design", "Technology", "Development", "Creativity", "Projects", "Solutions", "Collaborations", "Art", "Passion", "Pro", "Visionary", "IT", "Social Media", "Backend", "Frontend", "Culture", "Vision"];
-
+    // liste des mots a afficher avec animations
+    const words = [
+        "Innovation", "Idea", "Programmation", "Design", "Creation", "Full-stack", 
+        "Technology", "Development", "Creativity", "Projects", "Solutions", "Collaborations", 
+        "Art", "Passion", "Visionary", "IT", "Social Media", "Backend", "Frontend", 
+        "Culture", "Vision", "Growth", "Inspiration", "Collaboration", 
+        "Future", "Data", "Web", "Digital", "Network", "User Experience", "Optimization"
+    ]
+    
     useEffect(() => {
         const membersData = fetch('/members.json').then(response => response.json());
         const membersImages = fetch('/images.json').then(response => response.json());
@@ -19,9 +26,10 @@ const Members = () => {
             .then(([membersData, membersImagesData]) => {
                 handleMembersWithImages(membersData, membersImagesData);
             })
-            .catch(error => console.error("Error:", error));
+            .catch(error => console.error("erreur:", error));
     }, []);
 
+    // fonction pour associer les membres avec leurs images
     const handleMembersWithImages = (membersData, membersImagesData) => {
         const membersWithImages = membersData.map(member => {
             const memberImage = membersImagesData.find(image => image.id === member.image_id);
@@ -33,15 +41,47 @@ const Members = () => {
         setMembers(membersWithImages);
     };
 
+    // animations avec gsap
     useEffect(() => {
         gsap.fromTo('.member-card', { opacity: 0, y: 50 }, { opacity: 1, y: 0, stagger: 0.3, duration: 1 });
         gsap.fromTo('.members-title span', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.1, duration: 1 });
     }, [members]);
 
+    // fonction pour generer une animation aleatoire pour les mots
+    const generateRandomAnimation = () => {
+        const randomX = Math.random() * 200 - 100; 
+        const randomY = Math.random() * 200 - 100; 
+        const randomRotation = Math.random() * 360;  
+        const randomDelay = Math.random() * 2;  
+
+        console.log('animation aleatoire generee: ', { randomX, randomY, randomRotation, randomDelay });
+
+        return {
+            initial: {
+                opacity: 0,
+                x: randomX,
+                y: randomY,
+                rotate: randomRotation,
+            },
+            animate: {
+                opacity: 1,
+                x: randomX,
+                y: randomY,
+                rotate: randomRotation,
+                transition: { delay: randomDelay },
+            },
+            whileHover: {
+                scale: 1.2,
+                rotate: 15,
+                transition: { type: 'spring', stiffness: 300 },
+            },
+        };
+    };
+
     return (
         <div className='members-container-all'>
-            {/* title */}
-            <motion.div 
+            {/* titre anime */}
+            <motion.div
                 className="members-title"
                 whileHover={{
                     transition: { staggerChildren: 0.05 }
@@ -52,19 +92,19 @@ const Members = () => {
                         key={index}
                         initial={{ rotate: 0, scale: 0, x: -50 }}
                         animate={{
-                            rotate: [0, 20, -20, 10, 0],  
-                            scale: [0, 1.5, 1],           
-                            x: [0, -20, 20, 0],  
+                            rotate: [0, 20, -20, 10, 0],
+                            scale: [0, 1.5, 1],
+                            x: [0, -20, 20, 0],
                         }}
                         whileHover={{
-                            rotate: [0, 20, -20, 10, 0],  
-                            scale: [0, 1.5, 1],           
+                            rotate: [0, 20, -20, 10, 0],
+                            scale: [0, 1.5, 1],
                             x: [0, -20, 20, 0],
                         }}
                         transition={{
                             duration: 1.5,
-                            repeatDelay: 0.5,   
-                            ease: "easeInOut",  
+                            repeatDelay: 0.5,
+                            ease: "easeInOut",
                         }}
                         className="letter"
                     >
@@ -73,7 +113,6 @@ const Members = () => {
                 ))}
             </motion.div>
 
-            {/* Team list */}
             <div className='members-container'>
                 <div>
                     {members.length > 0 ? (
@@ -81,8 +120,8 @@ const Members = () => {
                             {members.map((member, index) => (
                                 <div className="div-indi col-md-4 col-sm-6 col-xs-12" key={index}>
                                     <div className="member-card">
-                                        <div 
-                                            className="cover" 
+                                        <div
+                                            className="cover"
                                             style={{
                                                 backgroundImage: `url(/assets/${member.image})`,
                                                 backgroundSize: 'cover',
@@ -108,46 +147,39 @@ const Members = () => {
                             ))}
                         </div>
                     ) : (
-                        <p>No members :'(</p>
+                        <p>no members :'(</p>
                     )}
                 </div>
             </div>
 
-            {/* word animes */}
+            {/* mots animes */}
             <div className="words-container">
-                {words.map((word, index) => (
-                    <motion.div
-                        key={index}
-                        className="word"
-                        initial={{
-                            opacity: 0,
-                            scale: 0.5,
-                            x: Math.random() * 200 - 100,
-                            y: Math.random() * 200 - 100,
-                            rotate: Math.random() * 360
-                        }}
-                        animate={{
-                            opacity: 1,
-                            scale: 1,
-                            x: Math.random() * 200 - 100,
-                            y: Math.random() * 200 - 100,
-                            rotate: Math.random() * 360,
-                            transition: { delay: Math.random() * 2 }
-                        }}
-                        whileHover={{
-                            scale: 1.2,
-                            rotate: 15,
-                            letterSpacing: "2px",  
-                            textShadow: "5px 5px 15px rgba(0,0,0,0.3)", 
-                            transition: { type: 'spring', stiffness: 300 }
-                        }}
-                    >
-                        {word}
-                    </motion.div>
-                ))}
+                {words.map((word, index) => {
+                    console.log('rendered word:', word);
+
+                    const randomAnimation = generateRandomAnimation()
+
+                    return (
+                        <motion.div
+                            key={index}
+                            className="word"
+                            {...randomAnimation}  // appliquer l'animation generee
+                            whileHover={randomAnimation.whileHover}  // appliquer l'animation au survol
+                            onMouseEnter={() => {
+                                console.log(`hovered on: ${word}`);  
+                            }}
+                        >
+                            {word}
+                        </motion.div>
+                    );
+                })}
             </div>
         </div>
     )
 }
 
 export default Members
+
+
+
+

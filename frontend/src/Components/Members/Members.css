@@ -6,6 +6,8 @@
     flex-wrap: wrap;
     overflow: hidden;
     color: #ffffff;
+    background: linear-gradient(to bottom, #0f161d, #202f3e, #4d5f77, #adc2de, #c7daf3); 
+
 }
 
 .members-container {
@@ -183,4 +185,8 @@
     pointer-events: none;
     display: inline-block;
     transition: all 0.3s ease-in-out;
+}
+
+.words-container .word {
+    pointer-events: auto;
 }
