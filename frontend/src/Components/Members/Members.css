@@ -164,26 +164,3 @@
     font-size: 24px; 
 }
 
-
-.member-card .dandelion {
-    position: absolute;
-    pointer-events: none;
-    z-index: 10;
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    animation: dandelionMove 2s forwards;
-    opacity: 0;
-}
-
-@keyframes dandelionMove {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0.3);
-        opacity: 0;
-    }
-}

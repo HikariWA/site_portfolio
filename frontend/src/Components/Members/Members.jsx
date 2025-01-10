@@ -31,38 +31,6 @@ const Members = () => {
         setMembers(membersWithImages);
     };
 
-
-    // particules qui suivent position d ela mouse
-    const createDandelionEffect = (e) => {
-        const memberCard = e.currentTarget
-        const numberOfParticles = 30
-    
-        // coordonnéees de la mouse
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-    
-        for (let i = 0; i < numberOfParticles; i++) {
-            const dandelion = document.createElement('div')
-            dandelion.classList.add('dandelion')
-            
-            // deplacement random autour de la mouse
-            const x = Math.random() * 50 - 25; 
-            const y = Math.random() * 50 - 25; 
-            
-            // ajouter les coordonnees a la particule
-            dandelion.style.left = `${mouseX + x}px`;
-            dandelion.style.top = `${mouseY + y}px`;
-    
-            memberCard.appendChild(dandelion);
-    
-            // disparition particule apres l'animation
-            setTimeout(() => {
-                dandelion.remove();
-            }, 2000); 
-        }
-    };
-    
-
     return (
         <div className='members-container-all'>
             <div className="members-title">
@@ -92,8 +60,7 @@ const Members = () => {
                         <div className="row members">
                             {members.map((member, index) => (
                                 <div className="div-indi col-md-4 col-sm-6 col-xs-12" 
-                                key={index}
-                                onMouseEnter={createDandelionEffect}>
+                                key={index}>
                                     <div className="member-card">
                                         <div 
                                             className="cover" 
