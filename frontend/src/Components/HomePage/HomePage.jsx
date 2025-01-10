@@ -10,6 +10,7 @@ const HomePage = () => {
   // pour la position de la mouse
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const controlsRef = useRef()
+  const hasAnimatedRef = useRef(false);
   const [popupIndex, setPopupIndex] = useState(null)
   const popups = [
     {
@@ -58,6 +59,12 @@ const HomePage = () => {
     checkPopups()
   }
 
+  //reinitialiser popups
+  const handleResetPopups = () => {
+    localStorage.removeItem('seenPopups');
+    checkPopups()
+  };
+
   // calcul du mouvement de la mouse et maj de la position de la mouse
   const handleMouseMove = (event) => {
     setMousePosition({
@@ -74,24 +81,31 @@ const HomePage = () => {
     };
   }, []);
 
-  //reinitialiser popups
-  const handleResetPopups = () => {
-    localStorage.removeItem('seenPopups');
-    checkPopups(); // Re-check popups after reset
-  };
-
 
   // pour assombrir background
   const backgroundStyle = popupIndex !== null ? { backgroundColor: 'rgba(0, 0, 0, 0.6)' } : {}
 
 
+  // verif si l'animation a deja ete vue
+  useEffect(() => {
+    const storedValue = localStorage.getItem('animatedTextBeenSeen');
+    if (storedValue === 'true') {
+      hasAnimatedRef.current = true;
+    }
+  }, []); 
+
+  const handleTextAnimation = () => {
+    hasAnimatedRef.current = true;
+    localStorage.setItem('animatedTextBeenSeen', 'true')
+  }
 
   return (
     <div className='homepage-container' style={backgroundStyle}>
         <Navbar/>
-          <div className="animated-text-container">
-            <AnimatedText />
-          </div>
+
+        <div className="animated-text-container">
+            {!hasAnimatedRef.current && <AnimatedText onComplete={handleTextAnimation} />}
+        </div>
 
         {popupIndex !== null && popups[popupIndex] && (
           <div className='popup' style={popups[popupIndex].position}>
@@ -107,8 +121,6 @@ const HomePage = () => {
         )}
 
         <button onClick={handleResetPopups}>Reinitialiser Popups</button>
-
-
 
         <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
@@ -130,7 +142,6 @@ const HomePage = () => {
             color="#78AD19" 
           />
         )}
-        {/* <spotLight position ={[2, 2, 2]} intensity={10} color="#78AD19" /> */}
 
         {/* modele 3D */}
         <Model mousePosition={mousePosition} />
