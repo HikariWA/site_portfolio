@@ -5,6 +5,8 @@ import Model from './Model/Model';
 import './HomePage.css';
 import AnimatedText from './AnimatedText/AnimatedText';
 import Navbar from '../Navbar/Navbar';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const HomePage = () => {
   // pour la position de la mouse
@@ -47,10 +49,6 @@ const HomePage = () => {
     }
   }
 
-  // useEffect(() => {
-  // console.log("popupIndex actuel :", popupIndex);
-  // }, [popupIndex]);
-
   // marquer tous les popups en vu
   const handleLetsGo = () => {
     let seenPopups = new Array(popups.length).fill(true)
@@ -64,6 +62,7 @@ const HomePage = () => {
     localStorage.removeItem('seenPopups');
     checkPopups()
   };
+  
 
   // calcul du mouvement de la mouse et maj de la position de la mouse
   const handleMouseMove = (event) => {
@@ -82,6 +81,8 @@ const HomePage = () => {
   }, []);
 
 
+
+
   // pour assombrir background
   const backgroundStyle = popupIndex !== null ? { backgroundColor: 'rgba(0, 0, 0, 0.6)' } : {}
 
@@ -98,6 +99,7 @@ const HomePage = () => {
     hasAnimatedRef.current = true;
     localStorage.setItem('animatedTextBeenSeen', 'true')
   }
+
 
 
   // Fonction de rotation pour la lumiere
@@ -135,18 +137,27 @@ const HomePage = () => {
             {!hasAnimatedRef.current && <AnimatedText onComplete={handleTextAnimation} />}
         </div>
 
-        {popupIndex !== null && popups[popupIndex] && (
-          <div className='popup' style={popups[popupIndex].position}>
-            <div className='popup-content'>
-              <p>{popups[popupIndex].message}</p>
-              {popupIndex < popups.length - 1 ? (
-                <button onClick={handleNext}>Next</button>
-              ) : (
-                <button onClick={handleLetsGo}>Lets gooo!</button>
-              )}
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {popupIndex !== null && popups[popupIndex] && (
+            <motion.div 
+              className='popup' 
+              style={popups[popupIndex].position}
+              initial={{ scale: 1 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className='popup-content'>
+                <p>{popups[popupIndex].message}</p>
+                {popupIndex < popups.length - 1 ? (
+                  <button onClick={handleNext}>Next</button>
+                ) : (
+                  <button onClick={handleLetsGo}>Let's gooo!</button>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <button onClick={handleResetPopups}>Reinitialiser Popups</button>
 

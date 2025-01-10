@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100vw;
 }
 
 .text {
@@ -25,7 +26,7 @@
   font-size: 75px;
   opacity: 0;
   height: 60px;
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  /* transition: transform 1s ease-in-out, opacity 1s ease-in-out; */
 }
 
 .fade-in {
@@ -68,7 +69,7 @@
 }
 
 .typewriter {
-  animation: typewriter 2.5s steps(22) 1s forwards, fadeIn 1s forwards; /* Réduit à 2.5s pour accélérer l'écriture */
+  animation: typewriter 2.5s steps(22) 1s forwards, fadeIn 1s forwards; 
 }
 
 @keyframes typewriter {
@@ -137,4 +138,52 @@
   z-index: 100;
   top: 50%;
   left: 50%;
+}
+
+
+/* .light-effect {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 5;
+  transform: translateY(-50%);
+} */
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  filter: blur(8px); 
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.background-overlay.active {
+  opacity: 1;
+}
+
+.homepage-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Arial', sans-serif;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

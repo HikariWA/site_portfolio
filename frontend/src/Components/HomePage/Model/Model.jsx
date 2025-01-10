@@ -8,6 +8,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import * as THREE from 'three';
 import { Html } from '@react-three/drei';
+import { motion } from 'framer-motion';
 
 import './Model.css'
 
@@ -146,8 +147,15 @@ const Model = ({ mousePosition }) => {
         onPointerOut={handlePointerOff}
       />
       {selectedPart && hoveredText && (
-        <Html position={[selectedPart.position.x + 2, selectedPart.position.y + 0.8, selectedPart.position.z]} className="mesh-label">
-          <div className="hoveredText-selectedPart">{hoveredText}</div>
+        <Html position={[selectedPart.position.x + 1.7, selectedPart.position.y + 1.8, selectedPart.position.z]} className="mesh-label">
+          <motion.div 
+            className="hoveredText-selectedPart"
+            initial={{ opacity: 0, y: -10 }} // Départ invisible et légèrement au-dessus
+            animate={{ opacity: 1, y: 0 }} // Fin visible et position normale
+            transition={{ duration: 0.5 }} // Durée de l'animation
+          >
+            {hoveredText}
+          </motion.div>
         </Html>
       )}
     </group>

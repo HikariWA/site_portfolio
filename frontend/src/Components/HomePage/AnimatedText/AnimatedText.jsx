@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './AnimatedText.css'
 
 const AnimatedText = () => {
@@ -62,20 +63,63 @@ const AnimatedText = () => {
       setSlideOut(true); 
       setOpacity(0);
       setTypedText('');
-    }, 7000);
+    }, 5000);
   }, []);
 
   return (
     <div className="homepage-text-container">
-      <div
+      <div className={`background-overlay ${hikariVisible || sloganVisible ? 'active' : ''}`}></div>
+
+      <motion.div
         className={`text hikari ${hikariVisible ? 'fade-in pulse' : ''} ${slideOut ? 'slide-out-right' : ''}`}
-        style={{ opacity: opacity }}
+        style={{
+          opacity: opacity,
+          textShadow: hikariVisible ? '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4)' : '',
+        }}
+        transition={{
+          duration: 2.5,
+          ease: [0.25, 0.46, 0.45, 0.25], 
+          loop: Infinity,
+          repeatDelay: 0.5
+        }}
       >
         <h1>Hikari</h1>
-      </div>
-      <div className={`text slogan ${sloganVisible ? 'typewriter' : ''} ${slideOut ? 'slide-out-right' : ''}`}>
+      </motion.div>
+      <motion.div
+        className={`text slogan ${sloganVisible ? 'typewriter' : ''} ${slideOut ? 'slide-out-right' : ''}`}
+        style={{ opacity: opacity }}
+        animate={{
+          opacity: sloganVisible ? 1 : 0,
+          scale: sloganVisible ? [1, 1.1, 1] : 1,
+          rotate: sloganVisible ? [0, -5, 5, 0] : 0,
+          x: sloganVisible ? [0, 20, -20, 0] : 0,
+          y: sloganVisible ? [0, 10, -10, 0] : 0,
+          filter: sloganVisible ? ['blur(0px)', 'blur(3px)', 'blur(0px)'] : 'blur(0px)',
+          skewX: sloganVisible ? ['0deg', '5deg', '-5deg', '0deg'] : '0deg', 
+          skewY: sloganVisible ? ['0deg', '5deg', '-5deg', '0deg'] : '0deg', 
+        }}
+        transition={{
+          duration: 2.5,
+          ease: 'easeInOut',
+          loop: Infinity,
+          repeatDelay: 0.5
+        }}
+      >
         {typedText}
-      </div>
+      </motion.div>
+
+      {/* animation light qui traverse le texte */}
+      <motion.div
+        className="light-effect"
+        animate={{
+          x: [0, '100vw'],
+        }}
+        transition={{
+          duration: 4,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      ></motion.div>
     </div>
   );
 }
