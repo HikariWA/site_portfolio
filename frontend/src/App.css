@@ -4,7 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #403e3e;
+  background-color: #222831;
+
+  /* background-color: #403e3e; */
   font-family: Arial, sans-serif;
 }
 

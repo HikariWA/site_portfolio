@@ -159,7 +159,7 @@ const HomePage = () => {
           )}
         </AnimatePresence>
 
-        <button onClick={handleResetPopups}>Reinitialiser Popups</button>
+        <button className='reinitialisation' onClick={handleResetPopups}>Reinitialiser Popups</button>
 
         <Canvas className='custom-canvas' onClick={(event) => console.log("event position: " + event)}>
 
