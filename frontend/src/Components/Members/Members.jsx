@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Members.css'
 
 const Members = () => {
@@ -27,8 +28,32 @@ const Members = () => {
         setMembers(membersWithImages);
     };
 
+    const titleText = "Team"
+
     return (
         <div className='members-container-all'>
+                <div className="members-title">
+                    {titleText.split("").map((letter, index) => (
+                        <motion.span
+                            key={index}
+                            initial={{ rotate: 0, scale: 0, x: -50 }}
+                            animate={{
+                                rotate: [0, 20, -20, 10, 0],  
+                                scale: [0, 1.5, 1],           
+                                x: [0, -20, 20, 0],  
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,   
+                                repeatDelay: 0.5,   
+                                ease: "easeInOut",  
+                            }}
+                            className="letter"
+                        >
+                            {letter}
+                        </motion.span>
+                    ))}
+                </div>
             <div className='members-container'>
                 <div>
                     {members.length > 0 ? (
