@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
 import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import './Members.css'
+import './Members.css';
 
 const Members = () => {
     const [members, setMembers] = useState([])
+    const [hovered, setHovered] = useState(null)
     const titleText = "Team"
 
+    const words = ["Innovation", "Idea", "Creation", "Design", "Technology", "Development", "Creativity", "Projects", "Solutions", "Collaborations", "Art", "Passion", "Pro", "Visionary", "IT", "Social Media", "Backend", "Frontend", "Culture", "Vision"];
 
     useEffect(() => {
         const membersData = fetch('/members.json').then(response => response.json());
@@ -31,8 +33,14 @@ const Members = () => {
         setMembers(membersWithImages);
     };
 
+    useEffect(() => {
+        gsap.fromTo('.member-card', { opacity: 0, y: 50 }, { opacity: 1, y: 0, stagger: 0.3, duration: 1 });
+        gsap.fromTo('.members-title span', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.1, duration: 1 });
+    }, [members]);
+
     return (
         <div className='members-container-all'>
+            {/* title */}
             <motion.div 
                 className="members-title"
                 whileHover={{
@@ -64,13 +72,14 @@ const Members = () => {
                     </motion.span>
                 ))}
             </motion.div>
+
+            {/* Team list */}
             <div className='members-container'>
                 <div>
                     {members.length > 0 ? (
                         <div className="row members">
                             {members.map((member, index) => (
-                                <div className="div-indi col-md-4 col-sm-6 col-xs-12" 
-                                key={index}>
+                                <div className="div-indi col-md-4 col-sm-6 col-xs-12" key={index}>
                                     <div className="member-card">
                                         <div 
                                             className="cover" 
@@ -102,6 +111,40 @@ const Members = () => {
                         <p>No members :'(</p>
                     )}
                 </div>
+            </div>
+
+            {/* word animes */}
+            <div className="words-container">
+                {words.map((word, index) => (
+                    <motion.div
+                        key={index}
+                        className="word"
+                        initial={{
+                            opacity: 0,
+                            scale: 0.5,
+                            x: Math.random() * 200 - 100,
+                            y: Math.random() * 200 - 100,
+                            rotate: Math.random() * 360
+                        }}
+                        animate={{
+                            opacity: 1,
+                            scale: 1,
+                            x: Math.random() * 200 - 100,
+                            y: Math.random() * 200 - 100,
+                            rotate: Math.random() * 360,
+                            transition: { delay: Math.random() * 2 }
+                        }}
+                        whileHover={{
+                            scale: 1.2,
+                            rotate: 15,
+                            letterSpacing: "2px",  
+                            textShadow: "5px 5px 15px rgba(0,0,0,0.3)", 
+                            transition: { type: 'spring', stiffness: 300 }
+                        }}
+                    >
+                        {word}
+                    </motion.div>
+                ))}
             </div>
         </div>
     )
