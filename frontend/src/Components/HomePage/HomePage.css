@@ -109,5 +109,14 @@
 
 
 .reinitialisation {
-  margin-top: 20%;
+  position: fixed; 
+  top: 20px;  
+  right: 20px; 
+  padding: 10px 20px;
+  background-color: #FFA500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10; 
 }
