@@ -4,14 +4,19 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    overflow: hidden;
+    color: #ffffff;
 }
+
 .members-container {
     display: flex;
     width: 100%;
+    min-height: 500px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .members {
     display: flex;
     width: 100%;
@@ -20,6 +25,7 @@
     flex-wrap: wrap;
     gap: 30px;
 }
+
 .member-card {
     position: relative;
     height: 400px;
@@ -120,8 +126,64 @@
 
 .members-title {
     display: flex;
-    justify-content: left;
-    width: 80%;
-    font-size: 47px;
+    justify-content: flex-end;
+    width: 600px;
+    color: white;
+    font-size: 87px;
     font-family: "Oswald", serif;
+}
+
+.members-title .letter {
+    color: white; 
+}
+
+@media (max-width: 442px) {
+    .members-title {
+        font-size: 30px !important;
+        padding-top: 8%;
+    }
+}
+@media (max-width: 709px) {
+    .members-title {
+        width: 250px;
+        justify-content: flex-start;
+        padding-top: 8%;
+    }
+}
+
+
+.member-card-back .social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.member-card-back .social-links a {
+    margin: 10px;
+    color: rgb(32, 55, 92); 
+    font-size: 24px; 
+}
+
+
+.member-card .dandelion {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: dandelionMove 2s forwards;
+    opacity: 0;
+}
+
+@keyframes dandelionMove {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
 }

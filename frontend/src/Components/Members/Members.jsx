@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import './Members.css'
 
 const Members = () => {
     const [members, setMembers] = useState([])
+    const titleText = "Team"
+
 
     useEffect(() => {
         const membersData = fetch('/members.json').then(response => response.json());
@@ -28,38 +31,69 @@ const Members = () => {
         setMembers(membersWithImages);
     };
 
-    const titleText = "Team"
+
+    // particules qui suivent position d ela mouse
+    const createDandelionEffect = (e) => {
+        const memberCard = e.currentTarget
+        const numberOfParticles = 30
+    
+        // coordonnéees de la mouse
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+    
+        for (let i = 0; i < numberOfParticles; i++) {
+            const dandelion = document.createElement('div')
+            dandelion.classList.add('dandelion')
+            
+            // deplacement random autour de la mouse
+            const x = Math.random() * 50 - 25; 
+            const y = Math.random() * 50 - 25; 
+            
+            // ajouter les coordonnees a la particule
+            dandelion.style.left = `${mouseX + x}px`;
+            dandelion.style.top = `${mouseY + y}px`;
+    
+            memberCard.appendChild(dandelion);
+    
+            // disparition particule apres l'animation
+            setTimeout(() => {
+                dandelion.remove();
+            }, 2000); 
+        }
+    };
+    
 
     return (
         <div className='members-container-all'>
-                <div className="members-title">
-                    {titleText.split("").map((letter, index) => (
-                        <motion.span
-                            key={index}
-                            initial={{ rotate: 0, scale: 0, x: -50 }}
-                            animate={{
-                                rotate: [0, 20, -20, 10, 0],  
-                                scale: [0, 1.5, 1],           
-                                x: [0, -20, 20, 0],  
-                            }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,   
-                                repeatDelay: 0.5,   
-                                ease: "easeInOut",  
-                            }}
-                            className="letter"
-                        >
-                            {letter}
-                        </motion.span>
-                    ))}
-                </div>
+            <div className="members-title">
+                {titleText.split("").map((letter, index) => (
+                    <motion.span
+                        key={index}
+                        initial={{ rotate: 0, scale: 0, x: -50 }}
+                        animate={{
+                            rotate: [0, 20, -20, 10, 0],  
+                            scale: [0, 1.5, 1],           
+                            x: [0, -20, 20, 0],  
+                        }}
+                        transition={{
+                            duration: 1.5,
+                            repeatDelay: 0.5,   
+                            ease: "easeInOut",  
+                        }}
+                        className="letter"
+                    >
+                        {letter}
+                    </motion.span>
+                ))}
+            </div>
             <div className='members-container'>
                 <div>
                     {members.length > 0 ? (
                         <div className="row members">
                             {members.map((member, index) => (
-                                <div className="div-indi col-md-4 col-sm-6 col-xs-12" key={index}>
+                                <div className="div-indi col-md-4 col-sm-6 col-xs-12" 
+                                key={index}
+                                onMouseEnter={createDandelionEffect}>
                                     <div className="member-card">
                                         <div 
                                             className="cover" 
@@ -77,12 +111,10 @@ const Members = () => {
                                         </div>
                                         <div className="member-card-back">
                                             <div className="social-links programs-images">
-                                                {member.github && <a href={member.github} target="_blank" rel="noopener noreferrer">GitHub</a>}
-                                                {member.twitter && <a href={member.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>}
-                                                {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
-                                                {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
-                                                {member.email && <a href={`mailto:${member.email}`}>Email</a>}
-                                                {member.phone && <a href={`tel:${member.phone}`}>Phone</a>}
+                                                {member.github && <a href={member.github} target="_blank" rel="noopener noreferrer"><FaGithub /></a>}
+                                                {member.twitter && <a href={member.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>}
+                                                {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>}
+                                                {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>}
                                             </div>
                                         </div>
                                     </div>
