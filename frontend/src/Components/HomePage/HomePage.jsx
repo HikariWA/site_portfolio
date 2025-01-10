@@ -16,7 +16,7 @@ const HomePage = () => {
   const [popupIndex, setPopupIndex] = useState(null)
   const popups = [
     {
-      message: "Hello! Naviguez avec le modèle 3D pour explorer.",
+      message: "Hello! Naviguez avec le modèle 3D pour explorer (rotation, zoom et dezoom avec le pad)",
       position: { top: '20%', left: '60%' },
       lightPosition: [2, 2, 2],
     },
