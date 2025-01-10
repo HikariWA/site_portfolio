@@ -5,9 +5,9 @@ import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import './Members.css'
 
 const Members = () => {
-    const [members, setMembers] = useState([]);
-    const [hoveredWord, setHoveredWord] = useState(null);
-    const titleText = "Team";
+    const [members, setMembers] = useState([])
+    const [hoveredWord, setHoveredWord] = useState(null)
+    const titleText = "Team"
 
     // liste des mots a afficher avec animations
     const words = [
@@ -47,28 +47,32 @@ const Members = () => {
         gsap.fromTo('.members-title span', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.1, duration: 1 });
     }, [members]);
 
-    // fonction pour generer une animation aleatoire pour les mots
+
     const generateRandomAnimation = () => {
-        const randomX = Math.random() * 200 - 100; 
-        const randomY = Math.random() * 200 - 100; 
-        const randomRotation = Math.random() * 360;  
-        const randomDelay = Math.random() * 2;  
-
+        const randomX = Math.random() * 200 - 100;
+        const randomY = Math.random() * 200 - 100;
+        const randomRotation = Math.random() * 360;
+        const randomDelay = Math.random() * 2;
+        const randomScale = [0, 1.5, 1]; 
+        const randomRotateArray = [0, 20, -20, 10, 0]; 
+    
         console.log('animation aleatoire generee: ', { randomX, randomY, randomRotation, randomDelay });
-
+    
         return {
             initial: {
                 opacity: 0,
                 x: randomX,
                 y: randomY,
                 rotate: randomRotation,
+                scale: 0,
             },
             animate: {
                 opacity: 1,
                 x: randomX,
                 y: randomY,
-                rotate: randomRotation,
-                transition: { delay: randomDelay },
+                rotate: randomRotateArray,
+                scale: randomScale,
+                transition: { delay: randomDelay, duration: 1.5, ease: 'easeInOut' },
             },
             whileHover: {
                 scale: 1.2,
@@ -77,6 +81,7 @@ const Members = () => {
             },
         };
     };
+    
 
     return (
         <div className='members-container-all'>
