@@ -188,3 +188,11 @@
   align-items: center;
   height: 100%;
 }
+
+
+@media (max-width: 442px) {
+  .slogan, .hikari {
+      font-size: 30px !important;
+      padding-top: 8%;
+  }
+}

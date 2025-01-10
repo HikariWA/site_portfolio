@@ -1,5 +1,4 @@
 .expertise-container-all {
-    background-color: #6d6868;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,8 +6,11 @@
     width: 100%;
     min-height: 100vh;
     padding-bottom: 30px;
+    background-color: #192531;
     font-family: Arial, sans-serif;
     color: rgb(236, 234, 234);
+    width: 100%;
+    min-height: 100vh;
 }
 
 .expertise-container {
@@ -17,6 +19,21 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    padding-top: 10%;
+}
+@media (max-width: 442px) {
+    .expertise-title {
+        font-size: 30px !important;
+        padding-top: 8%;
+    }
+}
+@media (max-width: 1440px) {
+    .expertise-container-all {
+        flex-direction: column-reverse; 
+    }
+    .expertise-container {
+        padding-top: 0;
+    }
 }
 
 .service-container {
