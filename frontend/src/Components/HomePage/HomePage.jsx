@@ -121,7 +121,14 @@ const HomePage = () => {
             color="#FFA500"
           />
         <spotLight position={[10, 10, 10]} intensity={0.7} />
-        <spotLight position ={[2, 2, 2]} intensity={10} color="#78AD19" />
+        {popupIndex === null && (
+          <spotLight 
+            position={[2, 2, 2]} 
+            intensity={10} 
+            color="#78AD19" 
+          />
+        )}
+        {/* <spotLight position ={[2, 2, 2]} intensity={10} color="#78AD19" /> */}
 
         {/* modele 3D */}
         <Model mousePosition={mousePosition} />
