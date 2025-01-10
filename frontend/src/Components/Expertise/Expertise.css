@@ -6,12 +6,11 @@
     width: 100%;
     min-height: 100vh;
     padding-bottom: 30px;
-    background-color: #192531;
+    background: linear-gradient(to right, #0f161d, #20415d);
     font-family: Arial, sans-serif;
     color: rgb(236, 234, 234);
-    width: 100%;
-    min-height: 100vh;
 }
+
 
 .expertise-container {
     display: flex;
