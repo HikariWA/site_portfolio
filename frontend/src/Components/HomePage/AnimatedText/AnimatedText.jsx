@@ -91,7 +91,7 @@ const AnimatedText = () => {
         animate={{
           opacity: sloganVisible ? 1 : 0,
           scale: sloganVisible ? [1, 1.1, 1] : 1,
-          rotate: sloganVisible ? [0, -5, 5, 0] : 0,
+          // rotate: sloganVisible ? [0, -5, 5, 0] : 0,
           rotate: sloganVisible ? [0, -5, 5, 0, 15] : 0, 
           x: sloganVisible ? [0, 20, -20, 0] : 0,
           y: sloganVisible ? [0, 10, -10, 0] : 0,
