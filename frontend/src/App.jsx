@@ -7,6 +7,7 @@ import Expertise from './Components/Expertise/Expertise';
 import Navbar from './Components/Navbar/Navbar';
 import Members from './Components/Members/Members';
 import Contact from './Components/Contact/Contact';
+import AnimatedText from './Components/HomePage/AnimatedText/AnimatedText';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
             <Route path="/members" element={<Members  />} />
             <Route path="/about" element={<About  />} />
             <Route path="/contact" element={<Contact  />} />
+            <Route path="/animated-txt" element={<AnimatedText  />} />
+
           </Routes>
       </Router>
     </ThemeProvider>

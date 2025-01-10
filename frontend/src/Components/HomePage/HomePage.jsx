@@ -89,7 +89,9 @@ const HomePage = () => {
   return (
     <div className='homepage-container' style={backgroundStyle}>
         <Navbar/>
-        {/* <AnimatedText /> */}
+          <div className="animated-text-container">
+            <AnimatedText />
+          </div>
 
         {popupIndex !== null && popups[popupIndex] && (
           <div className='popup' style={popups[popupIndex].position}>
