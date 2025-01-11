@@ -110,9 +110,13 @@ const About = () => {
                                     <source src="/assets/8.mp4" type="video/mp4" />
                                 </video>
                                 <div className={`up-front front ${hovered === 0 ? 'hidden' : ''}`}>
-                                    <h2>HIKARI</h2>
-                                    <p>Une histoire de passion et de savoir-faire</p>
-                                    <p>Découvrir davantage</p>
+                                    <div className='up-front-title'>
+                                        <h2>HIKARI</h2>
+                                    </div>
+                                    <div className='up-front-description'>
+                                        <p>Une histoire de passion et de savoir-faire</p>
+                                        <p>Découvrir davantage</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -141,17 +145,26 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <div className={`down-front front ${hovered === 0 ? 'hidden' : ''}`}>
+                                {/* <h2>Titre Front wshwhs ABS</h2>
+                                <p>Cos tam cos ale nie wiem co</p> */}
+                                <div className='up-back-down-content-first'>
+                                    <img src='/assets/picture.png' alt='image-about'/>
+                                </div>
+                                <div className='up-back-down-content-second'>
+                                    <h2>Qui sommes-nous?</h2>
+                                    <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique. Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p>
+                                </div>
+                            </div>
+                            <div className={`down-back back ${hovered === 0 ? 'visible' : 'hidden'}`}>
+                                {/* <h2>Titre Front wshwhs ABS</h2>
+                                <p>Cos tam cos ale nie wiem co</p> */}
                                 <div className='down-back-content-first'>
                                     <img src='/assets/color.png' alt='image-about'/>
                                 </div>
                                 <div className='down-back-content-second'>
-                                    <h2>Titre Back wshwhs</h2>
+                                    <h2>Members</h2>
                                     <p>Cos tam cos ale nie wiem co baaack</p>
                                 </div>
-                            </div>
-                            <div className={`down-back back ${hovered === 0 ? 'visible' : 'hidden'}`}>
-                                <h2>Titre Front wshwhs ABS</h2>
-                                <p>Cos tam cos ale nie wiem co</p>
                             </div>
                         </motion.div>
                     </div>
