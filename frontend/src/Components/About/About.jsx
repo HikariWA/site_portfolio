@@ -234,13 +234,18 @@ const About = () => {
                             </Canvas>
                         </div>
                         {/* Image 1 */}
-                        <motion.img
-                            src={currentImage}
-                            alt="Current"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                        />
+                        <div className='img-section-about'>
+                            <motion.img
+                                src={currentImage}
+                                alt="Current"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                            />
+                            <div className='txt-img-section-about'>
+                                <p>yoyoyoyooyoyoy</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
