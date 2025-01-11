@@ -9,6 +9,7 @@ import Members from './Components/Members/Members';
 import Contact from './Components/Contact/Contact';
 import AnimatedText from './Components/HomePage/AnimatedText/AnimatedText';
 import Dandelion from './Components/Dandlion/Dandlion';
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/animated-txt" element={<AnimatedText  />} />
 
           </Routes>
+          <Footer/>
       </Router>
     </ThemeProvider>
   );
