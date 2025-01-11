@@ -27,7 +27,7 @@
     position: absolute;
     top: 30px;
     left: 0;
-    /* background-color: #333; */
+    background-color: #33333378;
     border-radius: 5px;
 }
 
@@ -83,5 +83,6 @@
 }
   
 .social-icons-navbar a:hover {
-    color: #f0f0f0;
+    color: orange;
 }
+
