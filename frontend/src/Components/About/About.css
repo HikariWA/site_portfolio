@@ -18,10 +18,11 @@
 .about-container {
     display: flex;
     justify-content: center;
-    gap: 70px;
+    gap: 30px;
     width: 100%;
     min-height: 500px;
     padding-bottom: 3%;
+    align-items: center;
 }
 
 .about-left-section {
@@ -355,7 +356,7 @@
 }
 
 .about-right-section {
-    width: 400px;
+    width: 700px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -364,7 +365,7 @@
 }
 
 .about-right-section img {
-    width: 500px;
+    width: 700px;
     height: 310px;
     border-radius: 0 0 10px 10px;
     transition: opacity 0.5s ease;
@@ -385,3 +386,6 @@
 
 
 
+.canvas-container {
+    background-color: rgb(181, 117, 20);
+}
