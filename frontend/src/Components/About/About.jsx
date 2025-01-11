@@ -100,11 +100,11 @@ const About = () => {
                             }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className={`front ${hovered === 0 ? 'hidden' : ''}`}>
+                            <div className={`left-front front ${hovered === 0 ? 'hidden' : ''}`}>
                                 <h2>Titre Front wshwhs</h2>
                                 <p>Cos tam cos ale nie wiem co</p>
                             </div>
-                            <div className={`back ${hovered === 0 ? 'visible' : ''}`}>
+                            <div className={`left-back back ${hovered === 0 ? 'visible' : ''}`}>
                                 <div className='up-back-content-first'>
                                     <img src='/assets/color.png' alt='image-about'/>
                                 </div>
@@ -128,7 +128,7 @@ const About = () => {
                             }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className={`front ${hovered === 1 ? 'hidden' : ''}`}>
+                            <div className={`right-front front ${hovered === 1 ? 'hidden' : ''}`}>
                                 <div className='down-front-content-first'>
                                     <h2>Titre Front wshwhs</h2>
                                     <p>Cos tam cos ale nie wiem co</p>
@@ -137,7 +137,7 @@ const About = () => {
                                     <p>hey</p>
                                 </div>
                             </div>
-                            <div className={`back ${hovered === 1 ? 'visible' : ''}`}>
+                            <div className={`right-back back ${hovered === 1 ? 'visible' : ''}`}>
                                 <div className='down-back-content-first'>
                                     <p>hey back</p>
                                 </div>
