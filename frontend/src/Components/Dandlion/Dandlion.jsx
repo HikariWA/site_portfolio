@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 const Dandelion = () => {
   const location = useLocation();
 
-  // particles non visibles si home
-  if (location.pathname === '/') {
-    return null;
-  }
+if (location.pathname === '/' || location.pathname === '/about') {
+  return null;
+}
+
 
   // crea particules
   useEffect(() => {
@@ -40,7 +40,7 @@ const Dandelion = () => {
         target.tagName === 'A' ||
         target.tagName === 'UL' ||
         target.tagName === 'LI' ||
-        hasClass(target, 'social-icons-navbar', 'about-right-section-first'))
+        hasClass(target, 'social-icons-navbar'))
       ) {
         return;
       }
