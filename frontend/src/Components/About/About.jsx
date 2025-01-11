@@ -180,10 +180,24 @@ const About = () => {
                                 <div className='up-back-down-content-first'>
                                     <img src='/assets/picture.png' alt='image-about'/>
                                 </div>
-                                <div className='up-back-down-content-second'>
+                                <motion.div
+                                    className="up-back-down-content-second"
+                                    whileHover={{
+                                        scale: 1.15,
+                                        rotate: 1,
+                                        transition: { duration: 0.3 },
+                                        textShadow: '0px 0px 8px rgba(255,255,255,0.8)',
+                                    }}
+                                    >
+                                    <h2>Qui sommes-nous?</h2>
+                                    <p>
+                                        Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique.
+                                    </p>
+                                </motion.div>
+                                {/* <div className='up-back-down-content-second'>
                                     <h2>Qui sommes-nous?</h2>
                                     <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique.</p>
-                                </div>
+                                </div> */}
                             </div>
                             <div className={`down-back back ${hovered === 0 ? 'visible' : 'hidden'}`}>
                                 <div className='down-back-content-first'>
