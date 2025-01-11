@@ -4,6 +4,15 @@
     left: 20px;
     z-index: 1000; 
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.logo-image {
+    width: 50px;
 }
 
 .hamburger {
@@ -46,6 +55,7 @@
     display: flex;
     align-items: center;
     padding: 10px;
+    cursor: pointer;
 }
 
 .menu li a {
