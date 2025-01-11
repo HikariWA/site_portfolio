@@ -94,14 +94,14 @@
     background-color: transparent; 
 }
 
-.left-front {
+.up-front {
     width: 300px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
-.left-back {
+.up-back {
     display: flex;
     flex-direction: row; 
     justify-content: center;
@@ -117,7 +117,7 @@
     transition: opacity 0.8s ease, visibility 0.8s ease; 
 }
 
-.left-back.visible {
+.up-back.visible {
     visibility: visible;  
     opacity: 1; 
 }
@@ -129,6 +129,7 @@
     justify-content: center;
     align-items: center;
     position: relative;  
+    background-color: orange;
 }
 
 .up-back-content-first img {
@@ -150,6 +151,9 @@
     padding: 20px;
 }
 
+.up-back-content-second p {
+    text-align: left;
+}
 
 .down-front {
     width: 300px;
