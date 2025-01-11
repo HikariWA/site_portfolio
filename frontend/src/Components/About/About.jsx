@@ -20,7 +20,7 @@ const About = () => {
     const letterAnimations = {
         A: {
             scale: [1, 1.5, 1],
-            color: ["#000", "#ff0000", "#000"], 
+            color: ["#000", "#ff0000", "#fff"], 
             transition: { duration: 1, repeatType: 'loop' },
         },
         B: {
@@ -42,7 +42,7 @@ const About = () => {
         },
         U1: { 
             scale: [1, 1.2, 1],
-            color: ["#000", "#00ff00", "#000"],
+            color: ["#000", "#00ff00", "#fff"],
             transition: { duration: 1.2, repeatType: 'loop' },
         },
         S: {
@@ -101,7 +101,7 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <div className={`left-front front ${hovered === 0 ? 'hidden' : ''}`}>
-                                <h2>Titre Front wshwhs</h2>
+                                <h2>Titre Front wshwhs AHUT</h2>
                                 <p>Cos tam cos ale nie wiem co</p>
                             </div>
                             <div className={`left-back back ${hovered === 0 ? 'visible' : ''}`}>
@@ -120,31 +120,26 @@ const About = () => {
                         onMouseEnter={() => handleHover(1)}
                     >
                         <motion.div
-                            className="about-content"
+                            className="down-about-content"
                             initial={{ rotateX: 0, backgroundColor: "#fff" }}
                             animate={{
-                                rotateX: hovered === 1 ? 180 : 0,
-                                backgroundColor: hovered === 1 ? "transparent" : "#fff"
+                                rotateX: hovered === 0 ? 180 : 0,
+                                backgroundColor: hovered === 0 ? "transparent" : "#fff"
                             }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className={`right-front front ${hovered === 1 ? 'hidden' : ''}`}>
-                                <div className='down-front-content-first'>
-                                    <h2>Titre Front wshwhs</h2>
-                                    <p>Cos tam cos ale nie wiem co</p>
-                                </div>
-                                <div className='down-front-content-second'>
-                                    <p>hey</p>
-                                </div>
-                            </div>
-                            <div className={`right-back back ${hovered === 1 ? 'visible' : ''}`}>
+                            <div className={`down-front front ${hovered === 0 ? 'hidden' : ''}`}>
                                 <div className='down-back-content-first'>
-                                    <p>hey back</p>
+                                    <img src='/assets/color.png' alt='image-about'/>
                                 </div>
                                 <div className='down-back-content-second'>
                                     <h2>Titre Back wshwhs</h2>
                                     <p>Cos tam cos ale nie wiem co baaack</p>
                                 </div>
+                            </div>
+                            <div className={`down-back back ${hovered === 0 ? 'visible' : ''}`}>
+                                <h2>Titre Front wshwhs ABS</h2>
+                                <p>Cos tam cos ale nie wiem co</p>
                             </div>
                         </motion.div>
                     </div>
