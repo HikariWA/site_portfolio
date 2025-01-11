@@ -201,14 +201,6 @@ const About = () => {
                
                 <div className="about-right-section">
                     <div className='about-right-section-first'>
-                        {/* Image 1 */}
-                        <motion.img
-                            src={currentImage}
-                            alt="Current"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                        />
                         {/* Canvas */}
                         <div className="canvas-container" ref={canvasRef}>
                             <Canvas
@@ -228,6 +220,14 @@ const About = () => {
                                 <OrbitControls />
                             </Canvas>
                         </div>
+                        {/* Image 1 */}
+                        <motion.img
+                            src={currentImage}
+                            alt="Current"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                        />
                     </div>
                 </div>
             </div>

@@ -361,7 +361,7 @@
 .about-right-section img {
     width: 500px;
     height: 600px;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     transition: opacity 0.5s ease;
 }
 
