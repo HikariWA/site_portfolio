@@ -12,8 +12,9 @@ const About = () => {
         "/assets/s2.jpg",  
         "/assets/aura.jpg" 
     ];
-    const [currentImage, setCurrentImage] = useState(images[0]);
+    const [currentImage, setCurrentImage] = useState(images[0])
     const title = "About us"
+    const [titleAnimationKey, setTitleAnimationKey] = useState(0)
 
 
     const handleHover = (index) => {
@@ -91,28 +92,27 @@ const About = () => {
 
     return (
         <div className='about-container-all'>
-            <div className="about-title">
+            <div 
+                className="about-title" 
+                onMouseEnter={() => setTitleAnimationKey(prevKey => prevKey + 1)} 
+                onMouseLeave={() => setTitleAnimationKey(prevKey => prevKey + 1)} 
+            >
                 <h2>
                     {title.split("").map((letter, index) => {
-                        let animation
+                        let animation;
                         if (letter.toUpperCase() === 'U') {
-                            if (index === 3) {
-                                animation = letterAnimations['U1']
-                            } else if (index === 6) {
-                                animation = letterAnimations['U2']
-                            }
+                            animation = index === 3 ? letterAnimations['U1'] : (index === 6 ? letterAnimations['U2'] : defaultLetterAnimation)
                         } else {
                             animation = letterAnimations[letter.toUpperCase()] || defaultLetterAnimation
                         }
                         return (
                             <motion.span
-                                key={index}
+                                key={`${index}-${titleAnimationKey}`} 
                                 style={{ display: 'inline-block' }}
                                 animate={animation}
                             >
                                 {letter}
                                 {index === 4 && <span>&nbsp;</span>} 
-
                             </motion.span>
                         );
                     })}
