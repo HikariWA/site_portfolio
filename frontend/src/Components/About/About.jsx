@@ -242,6 +242,9 @@ const About = () => {
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.5 }}
                             />
+                            <div className='overlay-images'>
+                                <img src="/assets/eyes.png" alt="Lower Left" className='lower-left' />
+                            </div>
                             <div className='txt-img-section-about'>
                                 <p>yoyoyoyooyoyoy</p>
                             </div>
