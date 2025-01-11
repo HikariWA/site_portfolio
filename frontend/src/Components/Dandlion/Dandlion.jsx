@@ -20,6 +20,17 @@ const Dandelion = () => {
       const mouseY = e.clientY
       const proximity = 15
 
+      // pour eviter dandlion sur une className
+      const hasClass = (element, className) => {
+        while (element) {
+          if (element.classList && element.classList.contains(className)) {
+            return true;
+          }
+          element = element.parentElement;
+        }
+        return false;
+      };
+
       if (
         (mouseX > rect.left - proximity && mouseX < rect.right + proximity) &&
         (mouseY > rect.top - proximity && mouseY < rect.bottom + proximity) &&
@@ -27,7 +38,9 @@ const Dandelion = () => {
         target.tagName === 'TEXTAREA' ||
         target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||
-        target.tagName === 'LI')
+        target.tagName === 'UL' ||
+        target.tagName === 'LI' ||
+        hasClass(target, 'social-icons-navbar'))
       ) {
         return;
       }

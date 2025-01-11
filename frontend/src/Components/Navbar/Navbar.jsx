@@ -28,7 +28,7 @@ const Navbar = () => {
                 <li><a href="/members">Members</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
             </ul>
-            <div className="social-icons">
+            <div className="social-icons-navbar">
                 <a href="hikari-web-agency@gmail.com"><FaEnvelope size={24} /></a>
                 <a href="tel:123456789"><FaPhoneAlt size={24} /></a>
                 <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram size={24} /></a>
