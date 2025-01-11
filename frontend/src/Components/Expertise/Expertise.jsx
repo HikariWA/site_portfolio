@@ -51,6 +51,7 @@ const Expertise = () => {
 
   return (
     <div className='expertise-container-all'>
+        <div className='background-image-expertise' />
         <div className="expertise-container">
             <div className="service-container">
                 {services.map(service => (
