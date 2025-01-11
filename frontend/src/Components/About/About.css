@@ -94,12 +94,95 @@
     background-color: transparent; 
 }
 
+.video-background {
+    position: relative;
+    width: 100vh;
+    height: 50vh; 
+    overflow: hidden;
+}
+
+.video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.hidden-video {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.up-front {
+    position: relative;
+    z-index: 1;
+    color: white; 
+    text-align: center; 
+    padding: 20px;
+}
+  
 .up-front {
     width: 300px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    text-align: left;
 }
+
+
+/* .up-front h2 {
+    margin-left: 35%;
+}
+
+.up-front p {
+    margin-left: 55%;
+} */
+
+.up-back,
+.down-back {
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    opacity: 0; 
+    visibility: hidden; 
+    background-color: transparent;
+}
+
+.up-back.visible,
+.down-back.visible {
+    opacity: 1; 
+    visibility: visible; 
+    background-color: #fff; 
+}
+
+.video-background, .up-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.hidden-video {
+    display: none;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.video-background .up-front {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.video-background .up-front.hidden {
+    opacity: 0;
+}
+
 
 .up-back {
     display: flex;
@@ -114,7 +197,9 @@
     z-index: 1; 
     visibility: hidden;  
     opacity: 0;  
-    transition: opacity 0.8s ease, visibility 0.8s ease; 
+    /* transition: opacity 0.8s ease, visibility 0.8s ease;  */
+    transition: opacity 0.8s ease, visibility 0.8s ease, background-color 0.8s ease;
+
 }
 
 .up-back.visible {
@@ -154,6 +239,7 @@
 .up-back-content-second p {
     text-align: left;
 }
+
 
 .down-front {
     width: 300px;
@@ -253,3 +339,5 @@
     position: relative;
     z-index: 999;
 }
+
+

@@ -100,17 +100,29 @@ const About = () => {
                             }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className={`up-front front ${hovered === 0 ? 'hidden' : ''}`}>
-                                <h2>HIKARI</h2>
-                                <p>Une histoire de passion, de savoir-faire.</p>
+                            <div className="video-background">
+                                <video 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    className={hovered === 0 ? 'hidden-video' : 'visible-video'}
+                                >
+                                    <source src="/assets/8.mp4" type="video/mp4" />
+                                </video>
+                                <div className={`up-front front ${hovered === 0 ? 'hidden' : ''}`}>
+                                    <h2>HIKARI</h2>
+                                    <p>Une histoire de passion et de savoir-faire</p>
+                                    <p>Découvrir davantage</p>
+                                </div>
                             </div>
+
                             <div className={`up-back back ${hovered === 0 ? 'visible' : ''}`}>
                                 <div className='up-back-content-first'>
                                     <img src='/assets/picture.png' alt='image-about'/>
                                 </div>
                                 <div className='up-back-content-second'>
                                     <h2>Qui sommes-nous?</h2>
-                                    <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique. Hikari incarne l'union de leurs aspirations et de leur engagement à donner vie à un projet qui reflète leurs valeurs et leur créativité.</p>
+                                    <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique. Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -123,7 +135,7 @@ const About = () => {
                             className="down-about-content"
                             initial={{ rotateX: 0, backgroundColor: "#fff" }}
                             animate={{
-                                rotateX: hovered === 0 ? 180 : 0,
+                                rotateX: hovered === 0 ? -180 : 0,
                                 backgroundColor: hovered === 0 ? "transparent" : "#fff"
                             }}
                             transition={{ duration: 0.8 }}
@@ -137,7 +149,7 @@ const About = () => {
                                     <p>Cos tam cos ale nie wiem co baaack</p>
                                 </div>
                             </div>
-                            <div className={`down-back back ${hovered === 0 ? 'visible' : ''}`}>
+                            <div className={`down-back back ${hovered === 0 ? 'visible' : 'hidden'}`}>
                                 <h2>Titre Front wshwhs ABS</h2>
                                 <p>Cos tam cos ale nie wiem co</p>
                             </div>
