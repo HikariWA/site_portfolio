@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     overflow: hidden;
     color: #ffffff;
-    background: linear-gradient(to bottom, #0f161d, #202f3e, #4d5f77, #adc2de, #c7daf3); 
+    background: linear-gradient(to bottom, #0f161d, #202f3e, #4d5f77, #adc2de); 
 }
 
 .members-container {
@@ -198,12 +198,13 @@
     justify-content: center;
     gap: 15px;
     overflow:  hidden !important;
-    width: 44%;
+    width: 100vw;
+    /* width: 44%; */
     height: 100vh; 
     position: absolute; 
-    top: 10; 
+    top: -150; 
     left: 0;
-    z-index: 1; 
+    /* bottom: 80; */
 }
 
 .word {
@@ -214,3 +215,4 @@
     display: inline-block;
     transition: all 0.3s ease-in-out;
 }
+

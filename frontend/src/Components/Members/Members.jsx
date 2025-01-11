@@ -15,7 +15,8 @@ const Members = () => {
         "Technology", "Development", "Creativity", "Projects", "Solutions", "Collaborations", 
         "Art", "Passion", "Visionary", "IT", "Social Media", "Backend", "Frontend", 
         "Culture", "Vision", "Growth", "Inspiration", "Collaboration", 
-        "Future", "Data", "Web", "Digital", "Network", "User Experience", "Optimization"
+        "Future", "Data", "Web", "Digital", "Network", "User Experience", "Optimization", "Work",
+        "Database", "Tech"
     ]
     
     useEffect(() => {
