@@ -18,7 +18,7 @@
 .about-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 70px;
     width: 100%;
     min-height: 500px;
     padding-bottom: 10%;
@@ -375,5 +375,8 @@
     position: relative;
     z-index: 999;
 }
+
+
+
 
 

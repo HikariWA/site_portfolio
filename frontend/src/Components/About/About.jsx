@@ -1,20 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './About.css'
+import './About.css';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Model from './Model/Model';
 
 const About = () => {
-    const [hovered, setHovered] = useState(null)
+    const [hovered, setHovered] = useState(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const images = [
-        "/assets/s2.jpg",
-        "/assets/aura.jpg"
-    ]
-    const [currentImage, setCurrentImage] = useState(images[0])
+        "/assets/s2.jpg",  
+        "/assets/aura.jpg" 
+    ];
+    const [currentImage, setCurrentImage] = useState(images[0]);
     const title = "About us"
 
+
     const handleHover = (index) => {
-        setHovered(index)
-        setCurrentImage(images[index])
+        setHovered(index);
+        setCurrentImage(images[index]);
+    };
+
+    // ref du conteneur du canvas
+    const canvasRef = useRef(null)
+
+    // position de la souris par rapport au Canvas
+    const handleMouseMove = (event) => {
+        if (canvasRef.current) {
+            // recup les coordonnees de la mouse par rapport a Canvas
+            const rect = canvasRef.current.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width * 2 - 1; 
+            const y = -(event.clientY - rect.top) / rect.height * 2 + 1; 
+            setMousePosition({ x, y })
+        }
     }
+
+    // event listener pour la mouse a l'interieur du canvas
+    useEffect(() => {
+        if (canvasRef.current) {
+            canvasRef.current.addEventListener('mousemove', handleMouseMove)
+        }
+        return () => {
+            if (canvasRef.current) {
+                canvasRef.current.removeEventListener('mousemove', handleMouseMove) // nettoyage
+            }
+        }
+    }, []);
+
 
     // animations pour chaque lettre
     const letterAnimations = {
@@ -55,6 +87,7 @@ const About = () => {
         scale: [1, 1.05, 1],
         transition: { duration: 0.6, repeat: Infinity, repeatType: 'loop' }
     };
+
 
     return (
         <div className='about-container-all'>
@@ -145,8 +178,6 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <div className={`down-front front ${hovered === 0 ? 'hidden' : ''}`}>
-                                {/* <h2>Titre Front wshwhs ABS</h2>
-                                <p>Cos tam cos ale nie wiem co</p> */}
                                 <div className='up-back-down-content-first'>
                                     <img src='/assets/picture.png' alt='image-about'/>
                                 </div>
@@ -156,8 +187,6 @@ const About = () => {
                                 </div>
                             </div>
                             <div className={`down-back back ${hovered === 0 ? 'visible' : 'hidden'}`}>
-                                {/* <h2>Titre Front wshwhs ABS</h2>
-                                <p>Cos tam cos ale nie wiem co</p> */}
                                 <div className='down-back-content-first'>
                                     <img src='/assets/color.png' alt='image-about'/>
                                 </div>
@@ -169,14 +198,37 @@ const About = () => {
                         </motion.div>
                     </div>
                 </div>
+               
                 <div className="about-right-section">
-                    <motion.img
-                        src={currentImage}
-                        alt="Current"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                    />
+                    <div className='about-right-section-first'>
+                        {/* Image 1 */}
+                        <motion.img
+                            src={currentImage}
+                            alt="Current"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                        />
+                        {/* Canvas */}
+                        <div className="canvas-container" ref={canvasRef}>
+                            <Canvas
+                                camera={{ position: [0, 0, 5], fov: 50 }}
+                            >
+                                <mesh position={[0, 0, -10]}>
+                                    <planeGeometry args={[100, 100]} />
+                                    <meshStandardMaterial color="lightblue" />
+                                </mesh>
+                                {/* lumiere */}
+                                <ambientLight intensity={0.5} />
+                                <spotLight position={[2, 2, 2]} intensity={1} angle={Math.PI / 4} penumbra={1} castShadow />
+                                
+                                {/* mesh */}
+                                <Model mousePosition={mousePosition} />
+
+                                <OrbitControls />
+                            </Canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,3 +236,4 @@ const About = () => {
 }
 
 export default About
+
