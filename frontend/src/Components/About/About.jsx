@@ -158,9 +158,8 @@ const About = () => {
                                     <img src='/assets/picture.png' alt='image-about'/>
                                 </div>
                                 <div className='up-back-content-second'>
-                                    <h2>Qui sommes-nous?</h2>
-                                    <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique. Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p>
-                                </div>
+                                    <p>Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p>
+                                    </div>
                             </div>
                         </motion.div>
                     </div>
@@ -183,7 +182,7 @@ const About = () => {
                                 </div>
                                 <div className='up-back-down-content-second'>
                                     <h2>Qui sommes-nous?</h2>
-                                    <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique. Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p>
+                                    <p>Hikari est né d'une rencontre entre passion et détermination. Dans un monde où le code occupe souvent plus de place que nos moments partagés avec nos proches, deux visionnaires ont décidé de créer ce concept unique.</p>
                                 </div>
                             </div>
                             <div className={`down-back back ${hovered === 0 ? 'visible' : 'hidden'}`}>
@@ -192,7 +191,7 @@ const About = () => {
                                 </div>
                                 <div className='down-back-content-second'>
                                     <h2>Members</h2>
-                                    <p>Cos tam cos ale nie wiem co baaack</p>
+                                    {/* <p>Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p> */}
                                 </div>
                             </div>
                         </motion.div>

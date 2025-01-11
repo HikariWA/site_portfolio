@@ -21,18 +21,18 @@
     gap: 70px;
     width: 100%;
     min-height: 500px;
-    padding-bottom: 10%;
+    padding-bottom: 3%;
 }
 
 .about-left-section {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    /* width: 50%; */
 }
 
 .about-top-left, .about-bottom-left {
-    width: 100%;
-    height: 50%;
+    width: 700px;
+    /* height: 50%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,8 +42,9 @@
 }
 
 .about-content {
-    width: 100%;
-    height: 100%;
+    width: 700px;
+    min-height: 220px;
+    /* height: 100%; */
     background-color: #fff; 
     border-radius: 8px;
     display: flex;
@@ -60,7 +61,8 @@
 
 .down-about-content {
     width: 100%;
-    height: 100%;
+    height: 200px;
+    /* height: 100%; */
     background-color: #fff; 
     border-radius: 8px;
     display: flex;
@@ -98,7 +100,7 @@
 .video-background {
     position: relative;
     width: 100vh;
-    height: 50vh; 
+    height: 100vh; 
     overflow: hidden;
 }
 
@@ -107,7 +109,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
+    /* height: 100%; */
     object-fit: cover; 
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
@@ -126,7 +129,7 @@
 }
   
 .up-front {
-    width: 300px;
+    width: 600px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -158,8 +161,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 700px;
+    /* height: 200px; */
+    /* height: 100%; */
     transition: transform 0.5s ease-in-out;
     backface-visibility: hidden;
 }
@@ -251,7 +255,7 @@
 
 .up-back-down-content-first:hover img {
     width: 100%;
-    transform: scale(1.1); /* Légère zoom sur l'image */
+    transform: scale(1.1); 
 }
 
 
@@ -289,6 +293,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 20px;  
+    height: 200px;
 }
 
 .down-back {
@@ -297,7 +302,7 @@
     justify-content: center;
     align-items: center; 
     width: 100%; 
-    height: 100%; 
+    /* min-height: 50px; */
     position: absolute; 
     top: 0;  
     left: 0; 
@@ -360,7 +365,7 @@
 
 .about-right-section img {
     width: 500px;
-    height: 600px;
+    height: 310px;
     border-radius: 0 0 10px 10px;
     transition: opacity 0.5s ease;
 }
