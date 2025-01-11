@@ -40,7 +40,7 @@ const Dandelion = () => {
         target.tagName === 'A' ||
         target.tagName === 'UL' ||
         target.tagName === 'LI' ||
-        hasClass(target, 'social-icons-navbar'))
+        hasClass(target, 'social-icons-navbar', 'about-right-section-first'))
       ) {
         return;
       }
