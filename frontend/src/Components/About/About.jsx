@@ -21,27 +21,33 @@ const About = () => {
         A: {
             scale: [1, 1.5, 1],
             color: ["#000", "#ff0000", "#000"], 
-            transition: { duration: 1, repeat: Infinity, repeatType: 'loop' },
+            transition: { duration: 1, repeatType: 'loop' },
         },
         B: {
             rotate: [0, 45, -45, 0],  
-            transition: { duration: 1, repeat: Infinity, repeatType: 'loop' },
+            transition: { duration: 1, repeatType: 'loop' },
         },
         O: {
             rotate: [0, 360],
-            transition: { duration: 2, repeat: Infinity, repeatType: 'loop' },
+            transition: { duration: 2, repeatType: 'loop' },
         },
         T: {
             y: [0, -20, 0],  
-            transition: { duration: 0.5, repeat: Infinity, repeatType: 'loop' },
+            transition: { duration: 0.5, repeatType: 'loop' },
         },
-        U: {
-            scale: [1, 1.5, 1],
-            transition: { duration: 1, repeat: Infinity, repeatType: 'loop' },
+        U2: {
+            scale: [1, 1.3, 0.7, 1], 
+            skew: ["0deg", "15deg", "-15deg", "0deg"],
+            transition: { duration: 2, repeatType: 'loop' },
+        },
+        U1: { 
+            scale: [1, 1.2, 1],
+            color: ["#000", "#00ff00", "#000"],
+            transition: { duration: 1.2, repeatType: 'loop' },
         },
         S: {
             scale: [1, 1.5, 1],
-            transition: { duration: 1, repeat: Infinity, repeatType: 'loop' },
+            transition: { duration: 1, repeatType: 'loop' },
         },
     };
 
@@ -55,7 +61,16 @@ const About = () => {
             <div className="about-title">
                 <h2>
                     {title.split("").map((letter, index) => {
-                        const animation = letterAnimations[letter.toUpperCase()] || defaultLetterAnimation
+                        let animation
+                        if (letter.toUpperCase() === 'U') {
+                            if (index === 3) {
+                                animation = letterAnimations['U1']
+                            } else if (index === 6) {
+                                animation = letterAnimations['U2']
+                            }
+                        } else {
+                            animation = letterAnimations[letter.toUpperCase()] || defaultLetterAnimation
+                        }
                         return (
                             <motion.span
                                 key={index}
@@ -63,30 +78,12 @@ const About = () => {
                                 animate={animation}
                             >
                                 {letter}
+                                {index === 4 && <span>&nbsp;</span>} 
+
                             </motion.span>
                         );
                     })}
                 </h2>
-
-
-
-                {/* {title.split("").map((letter, index) => {
-                    console.log(`Letter: ${letter}`);
-                    if (letter === " ") return <span key={index}>{letter}</span>;
-
-                    const letterKey = letter.toUpperCase();
-                    const animation = letterAnimations[letterKey] || defaultLetterAnimation;
-                    
-                    return (
-                        <motion.span
-                            key={index}
-                            style={{ display: 'inline-block' }}
-                            {...animation}
-                        >
-                            {letter}
-                        </motion.span>
-                    );
-                })} */}
             </div>
             <div className="about-container">
                 <div className="about-left-section">
@@ -109,7 +106,7 @@ const About = () => {
                             </div>
                             <div className={`back ${hovered === 0 ? 'visible' : ''}`}>
                                 <div className='up-back-content-first'>
-                                    <p>hey back</p>
+                                    <img src='/assets/color.png' alt='image-about'/>
                                 </div>
                                 <div className='up-back-content-second'>
                                     <h2>Titre Back wshwhs</h2>
