@@ -26,8 +26,8 @@ const HomePage = () => {
       lightPosition: [ -2, 4, 3 ]
     },
     {
-      message: "Bonne visite!",
-      position: { top: '70%', left: '10%' },
+      message: "N'hesitez pas a interagir avec les differents contenus. Bonne visite et a bientot!",
+      position: { top: '45%', left: '10%' },
       lightPosition: [-2, 0, 3],
     }
   ];
