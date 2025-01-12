@@ -6,6 +6,7 @@ const Expertise = () => {
     const [services, setServices] = useState([])
     const [images, setImages] = useState([])
     const [hovered, setHovered] = useState(null)
+    const [visibleDiv, setVisibleDiv] = useState(null);
 
 //   useEffect(() => {
 //     fetch('/services.json')
@@ -36,7 +37,13 @@ const Expertise = () => {
     });
     setServices(servicesWithImages)
   }
-  
+
+
+  const handleShowHiddenDiv = (id) => {
+    setVisibleDiv(visibleDiv === id ? null : id);
+    console.log("click handleShowHiddenDiv");
+  };
+
 
   // animation GSAP
   useEffect(() => {
@@ -62,15 +69,20 @@ const Expertise = () => {
                             {service.image && <img src={`/assets/${service.image}`} alt={service.title} />}
                         </div>
                         <div className="service-icon">
+                            {visibleDiv === service.id && (
+                              <div className='div-hidden-expertise visible'>
+                                  <p>{service.description}</p>
+                              </div>
+                            )}
                             {service.icon && <img src={`/assets/${service.icon}`} alt={service.title} />}
                         </div>
-                            <h3>
-                                {hovered === service.id ? (
-                                    <button>Read more</button>
-                                ) : (
-                                    service.title
-                                )}
-                            </h3>
+                        <h3>
+                        {hovered === service.id ? (
+                            <button onClick={() => handleShowHiddenDiv(service.id)}>Read more</button>
+                        ) : (
+                            service.title
+                        )}
+                        </h3>
                     </div>
                 ))}
             </div>

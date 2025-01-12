@@ -3,25 +3,30 @@
       "id": 1,
       "title": "service 1",
       "image_id": 3,
-      "icon" : "picture.png"
+      "icon" : "picture.png",
+      "description" : "description service"
     },
     {
       "id": 2,
       "title": "service 2",
       "image_id": 1,
-      "icon" : "webdev.png"
+      "icon" : "webdev.png",
+      "description" : "description service"
     },
     {
       "id": 3,
       "title": "service 3",
       "image_id": 2,
-      "icon" : "picture.png"
+      "icon" : "picture.png",
+      "description" : "description service"
+
     },
     {
       "id": 4,
       "title": "service 4",
       "image_id": 4,
-      "icon" : "webdev.png"
+      "icon" : "webdev.png",
+      "description" : "description service"
     }
 ]
   
