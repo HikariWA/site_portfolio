@@ -68,7 +68,8 @@
 }
 
 .div-hidden-expertise p {
-    margin: 0
+    /* margin: 0; */
+    margin-top: -30px;
 }
 
 .div-hidden-expertise.visible {
@@ -173,12 +174,12 @@
     width: 80%;
     font-size: 47px;
     font-family: "Oswald", serif;
+    z-index: 2;
 }
 
 .expertise-title:hover .read-more-button {
     opacity: 1;
 }
-
 
 .expertise-container-all {
     position: relative;
