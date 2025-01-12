@@ -57,6 +57,23 @@
     /* transition: all 0.3s ease; */
 }
 
+.div-hidden-expertise {
+    background-color: transparent; 
+    color: white; 
+    font-size: 18px;
+    border-radius: 5px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+    margin: 0;
+}
+
+.div-hidden-expertise p {
+    margin: 0
+}
+
+.div-hidden-expertise.visible {
+    opacity: 1; 
+}
 
 .service-image {
     position: absolute;
@@ -99,7 +116,7 @@
 }
 
 .service-icon img {
-    width: 100%;
+    width: 30px;
 }
 
 .service-card:hover .service-icon {

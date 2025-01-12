@@ -77,11 +77,7 @@ const Expertise = () => {
                             {service.icon && <img src={`/assets/${service.icon}`} alt={service.title} />}
                         </div>
                         <h3>
-                        {hovered === service.id ? (
                             <button onClick={() => handleShowHiddenDiv(service.id)}>Read more</button>
-                        ) : (
-                            service.title
-                        )}
                         </h3>
                     </div>
                 ))}
