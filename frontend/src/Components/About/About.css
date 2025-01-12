@@ -398,7 +398,7 @@
 .down-back-content-second a {
     color: orange;
     text-decoration: none;
-    font-size: 28px;
+    font-size: 58px;
     font-weight: 600;
 }
 
@@ -483,12 +483,17 @@
     height: 310px;
     writing-mode: vertical-rl;
     transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 50px; */
 }
 
 .txt-img-section-about a {
     color: orange;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 58px;
+    font-weight: 600;
 }
 
 @media (max-width: 1420px) {
