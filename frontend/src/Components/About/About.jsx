@@ -75,7 +75,7 @@ const About = () => {
         },
         U1: { 
             scale: [1, 1.2, 1],
-            color: ["#000", "#00ff00", "#fff"],
+            color: ["#F77600", "#CCA4C4", "#fff"],
             transition: { duration: 1.2, repeatType: 'loop' },
         },
         S: {
@@ -88,6 +88,20 @@ const About = () => {
         scale: [1, 1.05, 1],
         transition: { duration: 0.6, repeat: Infinity, repeatType: 'loop' }
     };
+
+
+    const RotatingLight = ({ position, color, intensity }) => {
+    const lightRef = useRef();
+  
+    useFrame(({ clock }) => {
+      if (lightRef.current) {
+        const time = clock.getElapsedTime();
+        const radius = 5;
+        lightRef.current.position.x = Math.sin(time) * radius;
+        lightRef.current.position.z = Math.cos(time) * radius;
+      }
+    });
+    }
 
 
     return (
@@ -143,13 +157,13 @@ const About = () => {
                                     <source src="/assets/8.mp4" type="video/mp4" />
                                 </video>
                                 <div className={`up-front front ${hovered === 0 ? 'hidden' : ''}`}>
-                                    <div className='up-front-title'>
+                                    {/* <div className='up-front-title'>
                                         <h2>HIKARI</h2>
-                                    </div>
-                                    <div className='up-front-description'>
+                                    </div> */}
+                                    {/* <div className='up-front-description'>
                                         <p>Une histoire de passion et de savoir-faire</p>
                                         <p>Découvrir davantage</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
 
@@ -204,8 +218,7 @@ const About = () => {
                                     <img src='/assets/color.png' alt='image-about'/>
                                 </div>
                                 <div className='down-back-content-second'>
-                                    <h2>Members</h2>
-                                    {/* <p>Hikari incarne l'union de nos aspirations et de notre engagement à donner vie à un projet qui reflète nos valeurs et notre créativité.</p> */}
+                                    <a href="/members">Members</a>                            
                                 </div>
                             </div>
                         </motion.div>
@@ -226,7 +239,20 @@ const About = () => {
                                 {/* lumiere */}
                                 <ambientLight intensity={0.5} />
                                 <spotLight position={[2, 2, 2]} intensity={1} angle={Math.PI / 4} penumbra={1} castShadow />
-                                
+                                <spotLight position={[10, 10, 10]} intensity={0.7} />
+                                <spotLight 
+                                    position={[2, 2, 2]} 
+                                    intensity={10} 
+                                    color="#78AD19" 
+                                />
+                                <spotLight 
+                                    position={[1, 0, 2]} 
+                                    intensity={10} 
+                                    color="#F77600" 
+                                />
+                                <RotatingLight position={[2, 2, 2]} color="#E0B2FF" intensity={10} />
+                                <RotatingLight position={[-3, 0, 5]} color="#AB50D6" intensity={10}/>
+
                                 {/* mesh */}
                                 <Model mousePosition={mousePosition} />
 
@@ -246,7 +272,7 @@ const About = () => {
                                 <img src="/assets/eyes.png" alt="Lower Left" className='lower-left' />
                             </div>
                             <div className='txt-img-section-about'>
-                                <p>yoyoyoyooyoyoy</p>
+                                <a href="/expertise">Our serveices</a>                            
                             </div>
                         </div>
                     </div>

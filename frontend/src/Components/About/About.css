@@ -394,6 +394,14 @@
     align-items: flex-start; 
     padding: 20px;
 }
+
+.down-back-content-second a {
+    color: orange;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 600;
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -467,10 +475,19 @@
     align-items: center;
     width: 100%;
 }
+
 .txt-img-section-about {
     width: 250px;
-    background-color: #fff;
+    background: linear-gradient(to bottom, #0f161d, #202f3e, #4d5f77, #adc2de); 
     height: 310px;
+    writing-mode: vertical-rl;
+    transform: none;
+}
+
+.txt-img-section-about a {
+    color: orange;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 @media (max-width: 1024px) {
