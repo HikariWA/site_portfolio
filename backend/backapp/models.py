@@ -1,9 +1,15 @@
 from django.db import models
 
+class Image(models.Model):
+    image = models.ImageField(upload_to='images/')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    
 class Members(models.Model):
     name = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
-    image_id = models.BigIntegerField()
+    image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True)  
     order = models.IntegerField()
     twitter = models.CharField(max_length=255, null=True, blank=True)
     linkedin = models.CharField(max_length=255, null=True, blank=True)
@@ -16,5 +22,7 @@ class Members(models.Model):
 
     def __str__(self):
         return self.name
+
+
 
 
