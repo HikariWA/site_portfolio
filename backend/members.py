@@ -12,13 +12,13 @@ def create_members():
 
     # creation objet images
     image1 = Image.objects.create(
-        image='images/eyes.png',  
+        image='images/s2.jpg',  
         created_at='2025-01-01 12:00:00',  
         updated_at='2025-01-01 12:00:00'
     )
 
     image2 = Image.objects.create(
-        image='images/eyes.png', 
+        image='images/aura.jpg', 
         created_at='2025-01-01 12:00:00',
         updated_at='2025-01-01 12:00:00'
     )
