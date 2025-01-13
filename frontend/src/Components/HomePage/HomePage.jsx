@@ -150,9 +150,9 @@ const HomePage = () => {
               <div className='popup-content'>
                 <p>{popups[popupIndex].message}</p>
                 {popupIndex < popups.length - 1 ? (
-                  <button onClick={handleNext}>Next</button>
+                  <button className="button-hover-effect" onClick={handleNext}>Next</button>
                 ) : (
-                  <button onClick={handleLetsGo}>Let's gooo!</button>
+                  <button className="button-hover-effect" onClick={handleLetsGo}>Let's gooo!</button>
                 )}
               </div>
             </motion.div>

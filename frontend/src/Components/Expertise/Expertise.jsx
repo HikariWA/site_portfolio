@@ -77,7 +77,7 @@ const Expertise = () => {
                             {service.icon && <img src={`/assets/${service.icon}`} alt={service.title} />}
                         </div>
                         <h3>
-                            <button onClick={() => handleShowHiddenDiv(service.id)}>Read more</button>
+                            <button className='button-hover-effect' onClick={() => handleShowHiddenDiv(service.id)}>Read more</button>
                         </h3>
                     </div>
                 ))}

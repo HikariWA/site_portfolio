@@ -68,7 +68,7 @@
 .popup-content button {
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #007BFF;
+  /* background-color: #007BFF; */
   color: white;
   border: none;
   border-radius: 10px;
@@ -78,9 +78,9 @@
   animation: grainFadeIn 2.5s ease-in-out forwards;
 }
 
-.popup-content button:hover {
+/* .popup-content button:hover {
   background-color: #0056b3;
-}
+} */
 
 @keyframes grainFadeIn {
   0% {
