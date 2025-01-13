@@ -20,27 +20,31 @@ const Members = () => {
     ]
     
     useEffect(() => {
-        const membersData = fetch('/members.json').then(response => response.json());
-        const membersImages = fetch('/images.json').then(response => response.json());
-
-        Promise.all([membersData, membersImages])
-            .then(([membersData, membersImagesData]) => {
-                handleMembersWithImages(membersData, membersImagesData);
+        fetch('http://127.0.0.1:8000/api/members/')
+            .then(response => {
+                console.log('log response:', response); 
+                return response.json(); 
             })
-            .catch(error => console.error("erreur:", error));
+            .then(data => {
+                console.log('data des membres:', data);  
+                setMembers(data.members); 
+            })
+            .catch(error => {
+                console.error("Erreur:", error);
+            });
     }, []);
+    
+    
+    
 
-    // fonction pour associer les membres avec leurs images
-    const handleMembersWithImages = (membersData, membersImagesData) => {
-        const membersWithImages = membersData.map(member => {
-            const memberImage = membersImagesData.find(image => image.id === member.image_id);
-            return {
-                ...member,
-                image: memberImage ? memberImage.image : ''
-            };
-        });
+    const handleMembersWithImages = (membersData) => {
+        const membersWithImages = membersData.map(member => ({
+            ...member,
+            image: `/assets/${member.image_id}.jpg`, 
+        }));
         setMembers(membersWithImages);
     };
+    
 
     // animations avec gsap
     useEffect(() => {
@@ -119,7 +123,7 @@ const Members = () => {
                 ))}
             </motion.div>
 
-            <div className='members-container'>
+            <div className="members-container">
                 <div>
                     {members.length > 0 ? (
                         <div className="row members">
@@ -129,7 +133,7 @@ const Members = () => {
                                         <div
                                             className="cover"
                                             style={{
-                                                backgroundImage: `url(/assets/${member.image})`,
+                                                backgroundImage: `url(${member.image})`,
                                                 backgroundSize: 'cover',
                                                 backgroundPosition: 'center',
                                                 backgroundRepeat: 'no-repeat'
@@ -137,7 +141,7 @@ const Members = () => {
                                         >
                                             <div className="cover-content">
                                                 <h2>{member.name}</h2>
-                                                <p>{member.order}</p>
+                                                <p>{member.position}</p>
                                             </div>
                                         </div>
                                         <div className="member-card-back">
@@ -153,10 +157,11 @@ const Members = () => {
                             ))}
                         </div>
                     ) : (
-                        <p>no members :'(</p>
+                        <p>No members :'(</p>
                     )}
                 </div>
             </div>
+
 
             {/* mots animes */}
             <div className="words-container">
