@@ -9,7 +9,7 @@ const About = () => {
     const [hovered, setHovered] = useState(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const images = [
-        "/assets/s2.jpg",  
+        "/assets/s.jpg",  
         "/assets/aura.jpg" 
     ];
     const [currentImage, setCurrentImage] = useState(images[0])

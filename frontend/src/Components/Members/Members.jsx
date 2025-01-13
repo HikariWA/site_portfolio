@@ -18,32 +18,19 @@ const Members = () => {
         "Future", "Data", "Web", "Digital", "Network", "User Experience", "Optimization", "Work",
         "Database", "Tech"
     ]
-    
+
+    // recup data API
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/members/')
-            .then(response => {
-                console.log('log response:', response); 
-                return response.json(); 
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log('data des membres:', data);  
-                setMembers(data.members); 
+                console.log('data members :', data);
+                setMembers(data);
             })
             .catch(error => {
-                console.error("Erreur:", error);
+                console.error("error: ", error);
             });
     }, []);
-    
-    
-    
-
-    const handleMembersWithImages = (membersData) => {
-        const membersWithImages = membersData.map(member => ({
-            ...member,
-            image: `/assets/${member.image_id}.jpg`, 
-        }));
-        setMembers(membersWithImages);
-    };
     
 
     // animations avec gsap
@@ -125,40 +112,39 @@ const Members = () => {
 
             <div className="members-container">
                 <div>
-                    {members.length > 0 ? (
-                        <div className="row members">
-                            {members.map((member, index) => (
-                                <div className="div-indi col-md-4 col-sm-6 col-xs-12" key={index}>
-                                    <div className="member-card">
-                                        <div
-                                            className="cover"
-                                            style={{
-                                                backgroundImage: `url(${member.image})`,
-                                                backgroundSize: 'cover',
-                                                backgroundPosition: 'center',
-                                                backgroundRepeat: 'no-repeat'
-                                            }}
-                                        >
-                                            <div className="cover-content">
-                                                <h2>{member.name}</h2>
-                                                <p>{member.position}</p>
-                                            </div>
+                {members && members.length > 0 ? (
+                    <div className="row members">
+                        {members.map((member, index) => (
+                            <div className="div-indi col-md-4 col-sm-6 col-xs-12" key={index}>
+                                <div className="member-card">
+                                    <div className="cover">
+                                        <img
+                                            src={member.image.image_url}
+                                            alt={member.name}
+                                            className="member-image"
+                                        />
+                                        <div className="cover-content">
+                                            <h2>{member.name}</h2>
+                                            <p>{member.position}</p>
                                         </div>
-                                        <div className="member-card-back">
-                                            <div className="social-links programs-images">
-                                                {member.github && <a href={member.github} target="_blank" rel="noopener noreferrer"><FaGithub /></a>}
-                                                {member.twitter && <a href={member.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>}
-                                                {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>}
-                                                {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>}
-                                            </div>
+                                    </div>
+
+                                    <div className="member-card-back">
+                                        <div className="social-links programs-images">
+                                            {member.github && <a href={member.github} target="_blank" rel="noopener noreferrer"><FaGithub /></a>}
+                                            {member.twitter && <a href={member.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>}
+                                            {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>}
+                                            {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>}
                                         </div>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <p>No members :'(</p>
-                    )}
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>No members found.</p>
+                )}
+
                 </div>
             </div>
 
