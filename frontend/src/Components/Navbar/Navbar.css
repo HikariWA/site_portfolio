@@ -71,15 +71,23 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
 }
 
 .menu li {
     height: 50px;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
     cursor: pointer;
     transition: all 0.3s ease;
+    justify-content: center;
 }
 
 .menu li:hover {
