@@ -201,3 +201,47 @@
     right: 0; 
 }
 
+.service-card .service-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease-in-out;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* padding: 20px; */
+    text-align: center;
+}
+
+.service-card.active .service-description {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 10;
+}
+
+.service-card .service-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
+}
+
+.service-card.active .service-image {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+
+
+
+
+
