@@ -10,6 +10,7 @@ import Contact from './Components/Contact/Contact';
 import AnimatedText from './Components/HomePage/AnimatedText/AnimatedText';
 import Dandelion from './Components/Dandlion/Dandlion';
 import Footer from './Components/Footer/Footer';
+import Portfolio from './Components/Portfolio/Portfolio';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/expertise" element={<Expertise  />} />
             <Route path="/members" element={<Members  />} />
             <Route path="/about" element={<About  />} />
+            <Route path="/portfolio" element={<Portfolio  />} />
             <Route path="/contact" element={<Contact  />} />
             <Route path="/animated-txt" element={<AnimatedText  />} />
 
