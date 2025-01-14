@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const Dandelion = () => {
   const location = useLocation();
 
-if (location.pathname === '/' || location.pathname === '/about' || location.pathname === '/portfolio') {
+if (location.pathname === '/' || location.pathname === '/about' || location.pathname === '/portfolio' || location.pathname === '/contact') {
   return null;
 }
 
