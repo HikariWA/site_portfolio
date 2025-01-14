@@ -56,29 +56,34 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="portfolio-container">
-      {projects.map((project) => (
-        <div 
-          key={project.id} 
-          className="portfolio-item"
-          onMouseEnter={() => handleMouseEnter(project.id)}
-          onMouseLeave={() => handleMouseLeave(project.id)} 
-          onMouseMove={(e) => handleMouseMove(e, project.id)} 
-        >
-          <div className={`project-images project-images-${project.id}`}>
-            <div className={`image-slider image-slider-${project.id}`}>
-              {Array.isArray(project.images) && project.images.map((img, index) => (
-                <img key={index} src={img} alt={`Additional ${project.title}`} /> // affichage des images supplementaires du projet
-              ))}
-            </div>
-          </div>
-          <div className="project-details">
-            <h3>{project.title}</h3> 
-            <p>{project.description}</p> 
-            <a href={project.link} target="_blank" rel="noopener noreferrer">View Project</a> 
-          </div>
+    <div className='portfolio-container-all'>
+        <div className='portfolio-title'>
+            <h3>Portfolio</h3>
         </div>
-      ))}
+        <div className="portfolio-container">
+        {projects.map((project) => (
+            <div 
+            key={project.id} 
+            className="portfolio-item"
+            onMouseEnter={() => handleMouseEnter(project.id)}
+            onMouseLeave={() => handleMouseLeave(project.id)} 
+            onMouseMove={(e) => handleMouseMove(e, project.id)} 
+            >
+            <div className={`project-images project-images-${project.id}`}>
+                <div className={`image-slider image-slider-${project.id}`}>
+                {Array.isArray(project.images) && project.images.map((img, index) => (
+                    <img key={index} src={img} alt={`Additional ${project.title}`} /> // affichage des images supplementaires du projet
+                ))}
+                </div>
+            </div>
+            <div className="project-details">
+                <h3>{project.title}</h3> 
+                <p>{project.description}</p> 
+                <a href={project.link} target="_blank" rel="noopener noreferrer">View Project</a> 
+            </div>
+            </div>
+        ))}
+        </div>
     </div>
   )
 }

@@ -17,7 +17,13 @@ const Members = () => {
         "Culture", "Vision", "Growth", "Inspiration", "Collaboration", 
         "Future", "Data", "Web", "Digital", "Network", "User Experience", "Optimization", "Work",
         "Database", "Tech"
-    ]
+    ];
+
+    // liste des polices random
+    const fonts = [
+        'Arial', 'Verdana', 'Courier New', 'Georgia', 'Times New Roman', 'Trebuchet MS', 
+        'Roboto', 'Montserrat', 'Lobster', 'Pacifico', 'Playfair Display', 'Oswald'
+    ];
 
     // recup data API
     useEffect(() => {
@@ -38,7 +44,6 @@ const Members = () => {
         gsap.fromTo('.member-card', { opacity: 0, y: 50 }, { opacity: 1, y: 0, stagger: 0.3, duration: 1 });
         gsap.fromTo('.members-title span', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.1, duration: 1 });
     }, [members]);
-
 
     const generateRandomAnimation = () => {
         const randomX = Math.random() * 200 - 100;
@@ -73,7 +78,12 @@ const Members = () => {
             },
         };
     };
-    
+
+    // fonction pour obtenir une police random
+    const getRandomFont = () => {
+        const randomIndex = Math.floor(Math.random() * fonts.length);
+        return fonts[randomIndex];
+    };
 
     return (
         <div className='members-container-all'>
@@ -155,11 +165,13 @@ const Members = () => {
                     console.log('rendered word:', word);
 
                     const randomAnimation = generateRandomAnimation()
+                    const randomFont = getRandomFont(); // obtenir une police random
 
                     return (
                         <motion.div
                             key={index}
                             className="word"
+                            style={{ fontFamily: randomFont }} // appliquer la police random
                             {...randomAnimation}  // appliquer l'animation generee
                             whileHover={randomAnimation.whileHover}  // appliquer l'animation au survol
                             onMouseEnter={() => {
@@ -176,7 +188,3 @@ const Members = () => {
 }
 
 export default Members
-
-
-
-
