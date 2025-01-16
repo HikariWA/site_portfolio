@@ -3,6 +3,7 @@ import './Expertise.css';
 import gsap from 'gsap';
 
 const Expertise = () => {
+    
     const [services, setServices] = useState([]);
     const [hovered, setHovered] = useState(null);
     const [visibleDiv, setVisibleDiv] = useState(null);

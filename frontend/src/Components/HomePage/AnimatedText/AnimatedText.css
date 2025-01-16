@@ -200,3 +200,18 @@
       padding-top: 8%;
   }
 }
+
+@font-face {
+  font-family: 'Monoskull';
+  src: url('./assets/fonts/GloryMessup-drjPE.woff2') format('woff2'),
+       url('./assets/fonts/GloryMessup-drjPE.woff') format('woff'),
+       url('./assets/fonts/GloryMessup-drjPE.otf') format('opentype'),
+       url('./assets/fonts/GloryMessup-drjPE.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.slogan {
+  font-family: 'Monoskull', sans-serif;
+  color: rgb(255, 255, 255);
+}
